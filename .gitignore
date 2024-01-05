@@ -1,0 +1,34 @@
+# Arquivos temporários
+*.log
+*.out
+
+# Diretórios de saída do build
+/bin/
+/dist/
+
+# Arquivos de configuração específicos para IDEs ou editores
+.idea/
+.vscode/
+
+# Arquivos binários e caches
+*.exe
+*.so
+*.test
+
+# Arquivos de dependência específicos do Go Modules
+/go.sum
+/go.mod
+go.sum
+go.mod
+
+# Arquivos de configuração
+*.env
+.env.local
+.env.*.local
+.vscode/
+
+# Arquivos sensíveis e de configuração específicos do sistema
+.DS_Store
+
+# Arquivos de log
+logs/
