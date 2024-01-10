@@ -1,4 +1,4 @@
-package supabase
+package storage
 
 import (
 	"database/sql"
@@ -14,15 +14,13 @@ var (
 	supabaseUrl, supabaseKey, postgresHost, postgresPassword string
 )
 
-// SupabaseDB é uma instância do banco de dados Supabase
 var SupabaseDB *sql.DB
 
 func init() {
-	// Carrega as variáveis de ambiente do arquivo .env
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
 	}
-	// Atribui os valores das variáveis de ambiente
+
 	supabaseUrl = os.Getenv("SUPABASE_URL")
 	supabaseKey = os.Getenv("SUPABASE_KEY")
 	postgresHost = os.Getenv("POSTGRES_HOST")
@@ -34,4 +32,10 @@ func init() {
 	}
 
 	SupabaseDB = db
+}
+
+func OpenDatabaseConnection() (*sql.DB, error) {
+	// Função para abrir a conexão com o banco de dados
+	// Retornará um ponteiro para o DB para ser usado em outras partes do código
+	return SupabaseDB, nil
 }

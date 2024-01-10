@@ -2,25 +2,26 @@ package models
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 
-	"github.com/vitorwhois/Carnavou/supabase"
+	"github.com/vitorwhois/Carnavou/storage"
 )
 
-// ListaRepository define um repositório para operações relacionadas à lista (blocos, no seu caso)
 type ListaRepository struct{}
 
-// ObterBlocosPorData retorna blocos com base na data fornecida
 func (lr *ListaRepository) ObterBlocosPorData(data string) ([]Bloco, error) {
-	// Realiza a consulta na tabela "blocos" para as entradas com a data fornecida
-	rows, err := supabase.SupabaseDB.Query("SELECT id, nome, data, subprefeitura, local, concentracao, tamanho_id FROM blocos WHERE data = $1", data)
+	db, err := storage.OpenDatabaseConnection()
 	if err != nil {
-		log.Fatal(err)
-		return nil, err
+		return nil, fmt.Errorf("Erro ao obter a conexão com o banco de dados: %v", err)
+	}
+
+	rows, err := db.Query("SELECT id, nome, data, subprefeitura, local, concentracao, tamanho_id FROM blocos WHERE data = $1", data)
+	if err != nil {
+		return nil, fmt.Errorf("Erro ao executar a consulta: %v", err)
 	}
 	defer rows.Close()
 
-	// Processa os resultados
 	var blocos []Bloco
 	for rows.Next() {
 		var bloco Bloco
@@ -32,7 +33,6 @@ func (lr *ListaRepository) ObterBlocosPorData(data string) ([]Bloco, error) {
 			return nil, err
 		}
 
-		// Verifica se há um tamanho válido
 		if tamanho.Valid {
 			bloco.Tamanho = tamanho.String
 		} else {
@@ -42,11 +42,11 @@ func (lr *ListaRepository) ObterBlocosPorData(data string) ([]Bloco, error) {
 		blocos = append(blocos, bloco)
 	}
 
-	// Verifica se houve algum erro durante o processamento das linhas
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
 		return nil, err
 	}
 
 	return blocos, nil
+
 }
