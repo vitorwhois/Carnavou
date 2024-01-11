@@ -9,7 +9,7 @@ import (
 
 func ProgramacaoHandler(w http.ResponseWriter, r *http.Request) {
 	repository := models.ListaRepository{}
-	programacaoData, err := repository.ObterBlocosPorData("17/02/2024")
+	programacaoData, err := repository.ObterBlocosPorData("18/02/2024")
 	if err != nil {
 		http.Error(w, "Erro ao obter dados de programação", http.StatusInternalServerError)
 		return

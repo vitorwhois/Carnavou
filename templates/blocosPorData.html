@@ -3,44 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carnavou</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     TEste
-    <script>
-        // Função para fazer uma solicitação AJAX usando Fetch
-        function obterBlocosPorData() {
-            // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
-            const url = "/blocosPorData";
+    <div id="blocosContainer">
+        <!-- Os cards serão adicionados aqui dinamicamente -->
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-            // Faz uma solicitação GET para o servidor
-            fetch(url, {
-                method: 'GET',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                },
-            })
-            .then(response => {
-                // Verifica se a resposta está OK
-                if (!response.ok) {
-                    throw new Error(`Erro na solicitação: ${response.status}`);
-                }
-                // Converte a resposta para JSON
-                return response.json();
-            })
-            .then(data => {
-                // Manipula os dados recebidos (no formato JSON)
-                console.log("Blocos recebidos:", data);
-                // Faça o que precisar com os dados aqui
-            })
-            .catch(error => {
-                // Lida com erros durante a solicitação
-                console.error("Erro durante a solicitação:", error.message);
-            });
-        }
-
-        // Chama a função para obter blocos por data
-        obterBlocosPorData();
-    </script>
+<!--     <script>
+        // Aguarda o carregamento completo do DOM antes de executar o script
+        document.addEventListener('DOMContentLoaded', function () {
+            // Função para fazer uma solicitação AJAX usando Fetch
+            function obterBlocosPorData() {
+                // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
+                const url = "/blocosPorData";
+        
+                // Faz uma solicitação GET para o servidor
+                fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                })
+                .then(response => {
+                    // Verifica se a resposta está OK
+                    if (!response.ok) {
+                        throw new Error(`Erro na solicitação: ${response.status}`);
+                    }
+                    // Converte a resposta para JSON
+                    return response.json();
+                })
+                .then(data => {
+                    // Manipula os dados recebidos (no formato JSON)
+                    console.log("Blocos recebidos:", data);
+        
+                    // Chama a função para adicionar os cards ao container com os dados recebidos
+                    adicionarCardsAoContainer(data);
+                })
+                .catch(error => {
+                    // Lida com erros durante a solicitação
+                    console.error("Erro durante a solicitação:", error.message);
+                });
+            }
+        
+            // Função para adicionar os cards ao contêiner com base nos dados recebidos
+            function adicionarCardsAoContainer(blocosPorData) {
+                const blocosContainer = document.getElementById('blocosContainer');
+        
+                // Limpar qualquer conteúdo existente no contêiner
+                blocosContainer.innerHTML = '';
+        
+                // Adicionar os cards ao contêiner
+                blocosPorData.forEach(bloco => {
+                    const card = criarCard(bloco);
+                    blocosContainer.appendChild(card);
+                });
+            }
+        
+            // Função para criar um card com base nos dados do bloco
+            function criarCard(bloco) {
+                // Aqui, você pode criar a estrutura HTML do card com os dados específicos
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h2>${bloco.Nome}</h2>
+                    <p>${bloco.Local}</p>
+                    <p>Data: ${bloco.Data}</p>
+                    <!-- Adicione outras informações do bloco conforme necessário -->
+                `;
+                return card;
+            }
+        
+            // Chama a função para obter blocos por data
+            obterBlocosPorData();
+        });
+    </script> 
+-->
 </body>
 </html>
