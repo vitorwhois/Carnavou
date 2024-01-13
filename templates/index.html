@@ -44,16 +44,18 @@
         <form class="mt-3">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
-
-                </div>
-            </div>
-            <div class="row mt-2 d-flex justify-content-center text-end">
-                <div class="col-10">
-                    <button class="btn btn-outline-primary btn-pesquisar " type="button" style="width: 100%;">Pesquisar</button>
+                    <input type="text" for="nomeInput" id="nomeInput" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-secondary " type="button">Filtrar</button>
+                    <input type="text" for="dataInput" id="dataInput" class="form-control pesquisar" placeholder="Pesquise pela data do bloco ex: 17/02/2024"  aria-label="Pesquisar">
+                </div>
+            </div>      
+            <div class="row mt-2 d-flex justify-content-center text-end">
+                <div class="col-12">
+                    <button id="botaoPesquisa" class="btn btn-outline-primary btn-pesquisar " type="button"  style="width: 100%;">Pesquisar</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-secondary d-none " type="button" >Filtrar</button>
                 </div>
             </div>
         </form>
