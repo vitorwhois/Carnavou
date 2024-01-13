@@ -300,3 +300,18 @@ footer span {
         justify-content: center;
     }
   }
+  @media (max-width: 599px){
+    svg {
+        width: 20px;
+        height: 20px    ;
+    }
+    h3 {
+       font-size: 20px !important;
+    }
+    span {
+      font-size:  14px;
+    }
+    .card-horario {
+        margin-right: -10px;
+    }
+  }
