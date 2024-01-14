@@ -44,16 +44,18 @@
         <form class="mt-3">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
-
-                </div>
-            </div>
-            <div class="row mt-2 d-flex justify-content-center text-end">
-                <div class="col-10">
-                    <button class="btn btn-outline-primary btn-pesquisar " type="button" style="width: 100%;">Pesquisar</button>
+                    <input type="text" for="nomeInput" id="nomeInput" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-secondary " type="button">Filtrar</button>
+                    <input type="text" for="dataInput" id="dataInput" class="form-control pesquisar" placeholder="Pesquise pela data do bloco ex: 17/02/2024"  aria-label="Pesquisar">
+                </div>
+            </div>      
+            <div class="row mt-2 d-flex justify-content-center text-end">
+                <div class="col-12">
+                    <button id="botaoPesquisa" class="btn btn-outline-primary btn-pesquisar " type="button"  style="width: 100%;">Pesquisar</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-secondary d-none " type="button" >Filtrar</button>
                 </div>
             </div>
         </form>
@@ -66,6 +68,9 @@
             <p>Até dia 08/02</p>
         </div>
         <div class="programacao ">
+            <div id="blocosContainer" class="container mt-5 pt-5 corpo">
+                <!-- Os cards serão adicionados aqui dinamicamente -->
+            </div>
             <div class="card mb-3">
                 <div class="card-titulo">
                     <h3>Pirata</h3>
@@ -180,8 +185,8 @@
 
     </section>
 
-    <footer class="mt-5">
-        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 container">
+    <footer class="mt-5 footer-Conteudo">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 container mb-0 ">
             <div class="col-md-4 d-flex align-items-center">
               <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
@@ -202,8 +207,8 @@
     </footer>
 
 
-
-    <!-- Remover se nao foi utilizar o popper e -->
+    <script src="../static/js/script.js"></script>
+<!--     //Remover se nao foi utilizar o popper e jquery -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
