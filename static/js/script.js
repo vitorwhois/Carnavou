@@ -138,9 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // Adiciona a div com o título
         const cardTitulo = document.createElement('div');
         cardTitulo.className = 'card-titulo';
+        cardTitulo.style.display = 'flex';
+        cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
-            <h3>${bloco.Nome}</h3>
-        `;
+        <h3>${bloco.Nome}</h3>
+        <button class="add-list-link" data-bloco-id="${bloco.ID}">Add a lista <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+        </svg></button>
+    `;
         card.appendChild(cardTitulo);
 
         // Adiciona a div com as informações do card
@@ -214,4 +219,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Chama a função para obter blocos por data ao carregar a página
     obterBlocosPorData('');
+
+// Seleciona o elemento HTML (ajuste o seletor se necessário)
+let addListLink = document.querySelector('.add-list-link');
+console.log(addListLink);
+
+// Define a variável blocoID como o valor do atributo `data-bloco-id` do link
+let blocoID = addListLink.getAttribute('data-bloco-id');
+
+// Imprime o valor da variável blocoID
+console.log(blocoID);
+console.log('data-bloco-id');
+
+// Adiciona um ouvinte de evento ao link "Add a lista +"
+addListLink.addEventListener('click', function (event) {
+  event.preventDefault();
+  const blocoID = addListLink.getAttribute('data-bloco-id');
+  salvarBlocoNaLista(blocoID);
+  console.log(blocoID);
 });
+
+// Função para salvar o ID do bloco na lista (usando localStorage neste exemplo)
+function salvarBlocoNaLista(blocoID) {
+    console.log(blocoID);
+  // Recupera os IDs dos blocos salvos (se houver)
+  const blocosSalvos = JSON.parse(localStorage.getItem('blocosSalvos')) || [];
+  console.log(blocoID);
+
+  // Adiciona o novo ID à lista
+  if (!blocosSalvos.includes(blocoID)) {
+    blocosSalvos.push(blocoID);
+  }
+
+  // Salva a lista atualizada no localStorage
+  localStorage.setItem('blocosSalvos', JSON.stringify(blocosSalvos));
+
+  // Imprime o valor de blocosSalvos no console
+  console.log(blocosSalvos);
+}
+
+});
+
+

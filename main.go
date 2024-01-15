@@ -19,6 +19,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/blocosPorData", handlers.BlocosPorDataHandler)     // Ajuste da rota para /blocosPorData
 	http.HandleFunc("/pesquisarBlocos", handlers.PesquisarBlocosHandler) // Pesquisa por nome
+	/* 	http.HandleFunc("/minhalista", handlers.MinhaListaHandler)           //Lista criada pelo usuário */
 
 	//Abre conexão com o banco de dados
 	db, err := storage.OpenDatabaseConnection()
