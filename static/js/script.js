@@ -1,3 +1,8 @@
+    // Defina a var iável "blocoId" 
+    let blocoId;
+
+
+
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -69,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Chama a função para adicionar os cards ao container com os dados recebidos
             adicionarCardsAoContainer(data);
+            adicionarOuvintesDeEventos();
         })
         .catch(error => {
             // Lida com erros durante a solicitação
@@ -109,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Chama a função para adicionar os cards ao container com os dados da pesquisa
             adicionarCardsAoContainer(data);
+            adicionarOuvintesDeEventos();
         })
         .catch(error => {
             console.error("Erro durante a pesquisa:", error.message);
@@ -220,44 +227,44 @@ document.addEventListener('DOMContentLoaded', function () {
     // Chama a função para obter blocos por data ao carregar a página
     obterBlocosPorData('');
 
-// Seleciona o elemento HTML (ajuste o seletor se necessário)
-let addListLink = document.querySelector('.add-list-link');
-console.log(addListLink);
+    function adicionarOuvintesDeEventos() {
+        var buttons = document.querySelectorAll('.add-list-link');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                let blocoId = button.getAttribute('data-bloco-id');
+                salvarBlocoNaLista(blocoId);
+            });
+        });
+    }
+      
+    let blocosSalvos = [];
 
-// Define a variável blocoID como o valor do atributo `data-bloco-id` do link
-let blocoID = addListLink.getAttribute('data-bloco-id');
-
-// Imprime o valor da variável blocoID
-console.log(blocoID);
-console.log('data-bloco-id');
-
-// Adiciona um ouvinte de evento ao link "Add a lista +"
-addListLink.addEventListener('click', function (event) {
-  event.preventDefault();
-  const blocoID = addListLink.getAttribute('data-bloco-id');
-  salvarBlocoNaLista(blocoID);
-  console.log(blocoID);
-});
-
-// Função para salvar o ID do bloco na lista (usando localStorage neste exemplo)
-function salvarBlocoNaLista(blocoID) {
-    console.log(blocoID);
-  // Recupera os IDs dos blocos salvos (se houver)
-  const blocosSalvos = JSON.parse(localStorage.getItem('blocosSalvos')) || [];
-  console.log(blocoID);
+function salvarBlocoNaLista(blocoId) {
+  console.log(blocoId);
 
   // Adiciona o novo ID à lista
-  if (!blocosSalvos.includes(blocoID)) {
-    blocosSalvos.push(blocoID);
+  if (!blocosSalvos.includes(blocoId)) {
+    blocosSalvos.push(blocoId);
   }
-
-  // Salva a lista atualizada no localStorage
-  localStorage.setItem('blocosSalvos', JSON.stringify(blocosSalvos));
 
   // Imprime o valor de blocosSalvos no console
   console.log(blocosSalvos);
 }
 
+function chamarMinhaLista() {
+  // Cria a string de parâmetros de consulta
+  let params = blocosSalvos.join(',');
+
+  // Chama a rota /minhalista com os IDs dos blocos
+  fetch(`/minhalista?ids=${params}`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Erro:', error));
+}
+
+
 });
+
+
 
 
