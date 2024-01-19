@@ -4,47 +4,26 @@
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Função para obter blocos por IDs
+
+// Função para obter blocos por IDs por url
 function obterBlocosPorID() {
-    // Obtém os IDs da URL da página
+    // Obtém os dados codificados da URL da página
     const urlParams = new URLSearchParams(window.location.search);
     const ids = urlParams.get('ids');
 
     // Verifica se há IDs na URL
     if (!ids) {
-        console.error("IDs não encontrados na URL.");
-        return;
-    }
-
-    // Substitua a URL pelo caminho correto para o seu manipulador MinhaListaPorIDsHandler
-    const url = `/minhalista/blocos?ids=${ids}`;
-
-    // Faz uma solicitação GET para o servidor
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-        },
-    })
-    .then(response => {
-        // Verifica se a resposta está OK
-        if (!response.ok) {
-            throw new Error(`Erro na solicitação: ${response.status}`);
-        }
-        // Converte a resposta para JSON
-        return response.json();
-    })
-    .then(data => {
-        // Manipula os dados recebidos (no formato JSON)
-        console.log("Blocos recebidos:", data);
-
-        // Chama a função para adicionar os cards ao container com os dados recebidos
-        adicionarCardsAoContainer(data);
-    })
-    .catch(error => {
-        // Lida com erros durante a solicitação
-        console.error("Erro durante a solicitação:", error.message);
-    });
+    console.error("IDs de blocos não encontrados na URL.");
+    return;
+}
+    // Faz uma solicitação GET para buscar os blocos correspondentes
+    fetch('/minhalista?ids=' + ids)
+        .then(response => response.json())
+        .then(blocos => {
+            // Chama a função para adicionar os cards ao container com os blocos recebidos
+            adicionarCardsAoContainer(blocos);
+        })
+        .catch(error => console.error('Erro ao buscar blocos:', error));
 }
         
 
@@ -153,6 +132,7 @@ function obterBlocosPorID() {
 
     // Chama a função para obter blocos por data ao carregar a página
     obterBlocosPorID('');
+    chamarMinhaLista();
 
 /*     function adicionarOuvintesDeEventos() {
         var buttons = document.querySelectorAll('.add-list-link');

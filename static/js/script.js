@@ -252,15 +252,22 @@ function salvarBlocoNaLista(blocoId) {
 }
 
 function chamarMinhaLista() {
-  // Cria a string de parâmetros de consulta
-  let params = blocosSalvos.join(',');
-
-  // Chama a rota /minhalista com os IDs dos blocos
-  fetch(`/minhalista?ids=${params}`)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Erro:', error));
-}
+    // Codifica a lista de blocos
+    let dadosCodificados = btoa(JSON.stringify(blocosSalvos));
+  
+    // Cria o link para a lista do usuário
+    let link = `/minhalista/${dadosCodificados}`;
+  
+    // Chama a rota /minhalista com os dados codificados
+    fetch(link)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Aqui você pode adicionar a lógica para criar os cards com os dados recebidos
+        adicionarCardsAoContainer(data);
+      })
+      .catch(error => console.error('Erro:', error));
+  }
 
 
 });
