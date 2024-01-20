@@ -7,19 +7,19 @@ import (
 	"strings"
 
 	_ "github.com/lib/pq"
-	"github.com/vitorwhois/Carnavou/storage"
 )
 
-type ObterBlocosPorIDs struct{}
+type BuscaIDRepository struct {
+	db *sql.DB
+}
 
-func (r *ListaRepository) ObterBlocosPorIDs(ids []string) ([]Bloco, error) {
-	db, err := storage.OpenDatabaseConnection()
-	if err != nil {
-		return nil, fmt.Errorf("Erro ao obter a conexão com o banco de dados: %v", err)
-	}
+func NewBuscaIDRepository(db *sql.DB) *BuscaIDRepository {
+	return &BuscaIDRepository{db: db}
+}
 
+func (r *BuscaIDRepository) ObterBlocosPorIDs(ids []string) ([]Bloco, error) {
 	query := fmt.Sprintf("SELECT * FROM blocos WHERE id IN (%s)", strings.Join(ids, ","))
-	rows, err := db.Query(query)
+	rows, err := r.db.Query(query)
 	if err != nil {
 		return nil, fmt.Errorf("Falha ao executar a consulta: %w", err)
 	}
