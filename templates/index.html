@@ -46,9 +46,7 @@
                 <div class="col">
                     <input type="text" for="nomeInput" id="nomeInput" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
                 </div>
-                <div class="col">
-                    <input type="text" for="dataInput" id="dataInput" class="form-control pesquisar" placeholder="Pesquise pela data do bloco ex: 17/02/2024"  aria-label="Pesquisar">
-                </div>
+
             </div>      
             <div class="row mt-2 d-flex justify-content-center text-end">
                 <div class="col-10">
@@ -63,11 +61,34 @@
         <!-- Sidebar do filtro -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header d-flex justify-content-between align-items-center ">
-              <h5 class="text-center mx-auto mb-0 mt-5 pt-5 " id="offcanvasRightLabel">Selecione seus filtros</h5>
+              <h4 class="text-center mx-auto mb-0 mt-5 pt-5 " id="offcanvasRightLabel">Selecione seus filtros</h4>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-              ...
+                   <!-- Sidebar Body -->
+            <div class="offcanvas-body text-center mx-auto px-0">
+                <div class="col">
+                    <h5 class="text-start">Data</h5>
+                    <input type="text" for="dataInput" id="dataInput" class="form-control pesquisar" placeholder="Pesquise pela data do bloco"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Pesquisar">
+
+                </div>
+
+                <div class="input-group">
+                    <select class="custom-select pesquisar" id="inputGroupSelectData">
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+
+                <div class="col">   
+                    <h5 class="text-start">Região</h5>
+                    <input type="text" for="localInput" id="locaInput" class="form-control pesquisar" placeholder="Pesquise pela região do bloco ex: Lapa"  aria-label="Pesquisar">
+                </div>
+                <div class="row d-flex flex-column side-btn mx-auto ">
+                    <button class="btn btn-outline-primary " id="botaoFiltrar">Aplicar Filtros</button>
+                    <button class="btn btn-link ">Limpar Filtros</button>
+                </div>
+
             </div>
           </div>
         

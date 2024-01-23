@@ -243,6 +243,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (botaoPesquisa) {
         botaoPesquisa.addEventListener('click', realizarPesquisa);
     }
+     // Adiciona um ouvinte de evento ao botão de Filtros
+    const botaoFiltrar = document.getElementById('botaoFiltrar');
+    if (botaoFiltrar) {
+    botaoFiltrar.addEventListener('click', realizarPesquisa);
+    }
 
     // Chama a função para obter blocos por data ao carregar a página
     obterBlocosPorData('');

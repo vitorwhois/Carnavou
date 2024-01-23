@@ -16,7 +16,7 @@
     --dark-400:#8D8A92;
 }
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
 }
 h1 {
     font-family: 'Merriweather', serif;
@@ -36,7 +36,43 @@ a {
     border-radius: 16px;
     border: 2px solid var(--roxo-200);
     background: #FFF;
+    height: 56px;
 }
+/*select pesquisa */
+.custom-select{
+    width: 341px;
+    color: var(--pretume);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px
+}
+option {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px
+    }
+#inputGroupSelectData{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px
+}
+#inputGroupSelectData option {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
 .btn-outline-primary{
     background-color: var(--roxo-500);
     color: #FFF;
@@ -47,6 +83,7 @@ a {
     font-weight: 500;
     border: none;
     border-radius: 16px;
+    height: 51px;
 }
 .btn-outline-secondary {
     border-radius: 16px;
@@ -58,6 +95,16 @@ a {
     font-weight: 500;
     line-height: normal;
     color: var(--roxo-500);
+    height: 51px;
+}
+
+.btn-link{
+    color:var(--pretume);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .btn-outline-primary:hover{
@@ -287,6 +334,41 @@ footer{
 footer span {
     color: var(--roxo-100);
 }
+
+/* Sidebar */
+.offcanvas-body{
+    width: 341px;
+}
+.offcanvas-header h4{
+    margin-bottom: 32px;
+    color: var(--dark-800, #45434C);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.offcanvas-body h5{
+    margin-bottom: 8px;
+    color: var(--dark-800, #45434C);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+.offcanvas-body input {
+    width: 341px;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+ .side-btn {
+    width: 341px;
+    margin-top: 24px;
+    gap: 8px;
+
+} 
 
 /* Responsivo */
 @media (max-width: 990px) {
