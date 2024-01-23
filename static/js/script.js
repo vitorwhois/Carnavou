@@ -1,6 +1,26 @@
     // Defina a var iável "blocoId" 
     let blocoId;
+    let blocosSalvos = [];
 
+function salvarBlocoNaLista(blocoId) {
+  console.log(blocoId);
+
+  // Adiciona o novo ID à lista
+  if (!blocosSalvos.includes(blocoId)) {
+    blocosSalvos.push(blocoId);
+  }
+
+  // Imprime o valor de blocosSalvos no console
+  console.log(blocosSalvos);
+}
+
+
+function ChamaLista (){
+    let lista = blocosSalvos;
+    console.log(blocosSalvos);
+    console.log(lista);
+    window.location.href = `minhalista?ids=${blocosSalvos.join(',')}`;
+}
 
 
 // Aguarda o carregamento completo do DOM antes de executar o script
@@ -237,21 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
       
-    let blocosSalvos = [];
 
-function salvarBlocoNaLista(blocoId) {
-  console.log(blocoId);
 
-  // Adiciona o novo ID à lista
-  if (!blocosSalvos.includes(blocoId)) {
-    blocosSalvos.push(blocoId);
-  }
-
-  // Imprime o valor de blocosSalvos no console
-  console.log(blocosSalvos);
-}
-
-function chamarMinhaLista() {
+/* function chamarMinhaLista() {
     // Codifica a lista de blocos
     let dadosCodificados = btoa(JSON.stringify(blocosSalvos));
   
@@ -267,8 +275,7 @@ function chamarMinhaLista() {
         adicionarCardsAoContainer(data);
       })
       .catch(error => console.error('Erro:', error));
-  }
-
+  } */
 
 });
 

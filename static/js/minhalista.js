@@ -1,6 +1,18 @@
 /*     // Defina a var iável "blocoId" 
     let blocoId;
  */
+    let blocosSalvos = obterIdsDaUrl();
+    function obterIdsDaUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const idsParam = urlParams.get('ids');
+
+        if(idsParam) {
+            return idsParam.split(',').map(id => parseInt(id));
+                } else {
+                    return [];
+                } 
+    } 
+
 
 
 // Aguarda o carregamento completo do DOM antes de executar o script
@@ -38,6 +50,7 @@ function obterBlocosPorID() {
             // Chama a função para adicionar os cards ao container com os blocos recebidos
             console.log("Blocos recebidos:", blocos);
             adicionarCardsAoContainer(blocos);
+            adicionarOuvintesDeEventos();
         })
         .catch(error => {
             // Lida com erros durante a solicitação
@@ -74,7 +87,7 @@ function obterBlocosPorID() {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
         <h3>${bloco.Nome}</h3>
-        <button class="add-list-link" data-bloco-id="${bloco.ID}">Add a lista <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <button class="remover" data-bloco-id="${bloco.ID}">Remover <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
         </svg></button>
     `;
@@ -145,30 +158,24 @@ function obterBlocosPorID() {
 
     obterBlocosPorID();
 
-/*     // Adiciona um ouvinte de evento ao botão de pesquisa
-    const botaoPesquisa = document.getElementById('botaoPesquisa');
-    if (botaoPesquisa) {
-        botaoPesquisa.addEventListener('click', realizarPesquisa);
-    } */
-
-    // Chama a função para obter blocos por ID ao carregar a página
-    //chamarMinhaLista();
-
-/*     function adicionarOuvintesDeEventos() {
-        var buttons = document.querySelectorAll('.add-list-link');
+    function adicionarOuvintesDeEventos() {
+        var buttons = document.querySelectorAll('.remover');
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 let blocoId = button.getAttribute('data-bloco-id');
-                if (blocoId) {
-                    console.log(blocoId);
-                } else {
-                    console.error('O atributo "data-bloco-id" não foi encontrado no botão clicado.');
-                }
+                removerBlocoLista(blocoId);
+                console.log(blocoId);
+                window.location.href = `minhalista?ids=${blocosSalvos.join(',')}`;
             });
         });
-    } */
-    
+    }
 
+   
+    function removerBlocoLista(blocoId) {
+        // Use filter para criar uma nova lista sem o bloco removido
+        blocosSalvos = blocosSalvos.filter(id => id !== Number(blocoId));
+        console.log("Blocos Salvos após a remoção:", blocosSalvos);
+    }
 
 });
 
