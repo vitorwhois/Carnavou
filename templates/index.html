@@ -51,14 +51,26 @@
                 </div>
             </div>      
             <div class="row mt-2 d-flex justify-content-center text-end">
-                <div class="col-12">
+                <div class="col-10">
                     <button id="botaoPesquisa" class="btn btn-outline-primary btn-pesquisar " type="button"  style="width: 100%;">Pesquisar</button>
                 </div>
-                <div class="col">
-                    <button class="btn btn-outline-secondary d-none " type="button" >Filtrar</button>
+                <div class="col-2">
+                    <!-- Botão para abrir a sidebar -->
+                    <button class="btn btn-outline-secondary " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Filtrar</button>
                 </div>
             </div>
         </form>
+        <!-- Sidebar do filtro -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header d-flex justify-content-between align-items-center ">
+              <h5 class="text-center mx-auto mb-0 mt-5 pt-5 " id="offcanvasRightLabel">Selecione seus filtros</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              ...
+            </div>
+          </div>
+        
     </section>
 
     <section class="container mt-5 pt-5 corpo">
@@ -181,7 +193,6 @@
                 <p>Manda as informações do bloco pra gente incluir e ajudar mais foliões a aproveitar o <strong>Carnavou</strong>.</p>
                 <button type="button" class="btn btn-light" style="width: 100%">Enviar informações </button>
             </div>
-<button></button>
 
     </section>
 
