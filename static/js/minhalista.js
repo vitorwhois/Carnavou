@@ -87,7 +87,7 @@ function obterBlocosPorID() {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
         <h3>${bloco.Nome}</h3>
-        <button class="remover" data-bloco-id="${bloco.ID}">Remover <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <button class="remover btn-card" data-bloco-id="${bloco.ID}">Remover <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
         </svg></button>
     `;
@@ -99,7 +99,7 @@ function obterBlocosPorID() {
 
         // Adiciona a div com a data
         const cardData = document.createElement('div');
-        cardData.className = 'card-data';
+        cardData.className = 'card-data col-6';
         // Obtém apenas o dia e o mês da propriedade Data
         const diaEMes = bloco.Data.substring(0, 5);
 
@@ -111,22 +111,9 @@ function obterBlocosPorID() {
         `;
         infoCard.appendChild(cardData);
 
-        // Adiciona a div com o endereço
-        const cardEndereco = document.createElement('div');
-        cardEndereco.className = 'card-endereco';
-        cardEndereco.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-      </svg>
-            <span>${bloco.Local}</span>
-        `;
-        infoCard.appendChild(cardEndereco);
-
-
         // Adiciona a div com o horário
         const cardHorario = document.createElement('div');
-        cardHorario.className = 'card-horario';
+        cardHorario.className = 'card-horario col-6';
         // Somente os 2 primeiros dígitos do horário
         const duasPrimeirasHoras = bloco.Concentracao.substring(0, 2);
         cardHorario.innerHTML = `
@@ -138,21 +125,23 @@ function obterBlocosPorID() {
         `;
         infoCard.appendChild(cardHorario);
 
-/*         // Adiciona a div com as categorias - Proxima feature
-        const categorias = document.createElement('div');
-        categorias.className = 'categorias';
-        categorias.textContent = 'Categorias';
-        infoCard.appendChild(categorias);
+                // Adiciona a div com o endereço
+        const cardEndereco = document.createElement('div');
+        cardEndereco.className = 'card-endereco';
+        cardEndereco.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"></path>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
+            </svg>
+            <span>${bloco.Local}</span><br>
+            <p>${bloco.Subprefeitura}</p>
+        `;
 
-        // Adiciona a div com a lista de categorias (vazia por enquanto)
-        const categoriasValor = document.createElement('div');
-        categoriasValor.className = 'categorias-valor';
-        categoriasValor.innerHTML = '<ul class="d-flex"></ul>';
-        infoCard.appendChild(categoriasValor); */
+
 
         // Adiciona a div infoCard ao card
         card.appendChild(infoCard);
-
+        card.appendChild(cardEndereco);
         return card;
     }
 

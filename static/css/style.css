@@ -137,7 +137,7 @@ option {
 .btn-outline-secondary:hover{
     background-color: var(--roxo-500);
 }
-.btn-salvar{
+.btn-card{
     display: flex;
     padding: 4px 8px 4px 16px;
     align-items: center;
@@ -221,7 +221,7 @@ option {
     border: 2px solid var(--Roxo-200, #F3EBF6);
     background: #FFF;
     margin-bottom: 12px;
-    height: 208px;
+    min-height: 208px;
 }
 .card-titulo {
     font-size: 18px;
