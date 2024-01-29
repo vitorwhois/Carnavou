@@ -1,3 +1,28 @@
+    // Defina a var iável "blocoId" 
+    let blocoId;
+    let blocosSalvos = [];
+
+function salvarBlocoNaLista(blocoId) {
+  console.log(blocoId);
+
+  // Adiciona o novo ID à lista
+  if (!blocosSalvos.includes(blocoId)) {
+    blocosSalvos.push(blocoId);
+  }
+
+  // Imprime o valor de blocosSalvos no console
+  console.log(blocosSalvos);
+}
+
+
+function ChamaLista (){
+    let lista = blocosSalvos;
+    console.log(blocosSalvos);
+    console.log(lista);
+    window.location.href = `minhalista?ids=${blocosSalvos.join(',')}`;
+}
+
+
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -69,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Chama a função para adicionar os cards ao container com os dados recebidos
             adicionarCardsAoContainer(data);
+            adicionarOuvintesDeEventos();
         })
         .catch(error => {
             // Lida com erros durante a solicitação
@@ -109,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Chama a função para adicionar os cards ao container com os dados da pesquisa
             adicionarCardsAoContainer(data);
+            adicionarOuvintesDeEventos();
         })
         .catch(error => {
             console.error("Erro durante a pesquisa:", error.message);
@@ -129,30 +156,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Função para criar um card com base nos dados do bloco
     function criarCard(bloco) {
         // Cria o elemento card
         const card = document.createElement('div');
         card.className = 'card mb-2';
-
+    
         // Adiciona a div com o título
         const cardTitulo = document.createElement('div');
         cardTitulo.className = 'card-titulo';
+        cardTitulo.style.display = 'flex';
+        cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
             <h3>${bloco.Nome}</h3>
+            <button class="add-list-link btn-card" data-bloco-id="${bloco.ID}">Salvar
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                </svg>
+            </button>
         `;
         card.appendChild(cardTitulo);
-
+    
         // Adiciona a div com as informações do card
         const infoCard = document.createElement('div');
         infoCard.className = 'info-card';
-
+    
         // Adiciona a div com a data
         const cardData = document.createElement('div');
-        cardData.className = 'card-data';
-        // Obtém apenas o dia e o mês da propriedade Data
+        cardData.className = 'card-data col-6';
         const diaEMes = bloco.Data.substring(0, 5);
-
         cardData.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"></path>
@@ -160,24 +191,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <span>${diaEMes}</span>
         `;
         infoCard.appendChild(cardData);
-
-        // Adiciona a div com o endereço
-        const cardEndereco = document.createElement('div');
-        cardEndereco.className = 'card-endereco';
-        cardEndereco.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-      </svg>
-            <span>${bloco.Local}</span>
-        `;
-        infoCard.appendChild(cardEndereco);
-
-
+    
         // Adiciona a div com o horário
         const cardHorario = document.createElement('div');
-        cardHorario.className = 'card-horario';
-        // Somente os 2 primeiros dígitos do horário
+        cardHorario.className = 'card-horario col-6';
         const duasPrimeirasHoras = bloco.Concentracao.substring(0, 2);
         cardHorario.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -187,31 +204,77 @@ document.addEventListener('DOMContentLoaded', function () {
             <span>${duasPrimeirasHoras}h</span>
         `;
         infoCard.appendChild(cardHorario);
-
-/*         // Adiciona a div com as categorias - Proxima feature
-        const categorias = document.createElement('div');
-        categorias.className = 'categorias';
-        categorias.textContent = 'Categorias';
-        infoCard.appendChild(categorias);
-
-        // Adiciona a div com a lista de categorias (vazia por enquanto)
-        const categoriasValor = document.createElement('div');
-        categoriasValor.className = 'categorias-valor';
-        categoriasValor.innerHTML = '<ul class="d-flex"></ul>';
-        infoCard.appendChild(categoriasValor); */
-
+    
+        // Adiciona a div com o endereço
+        const cardEndereco = document.createElement('div');
+        cardEndereco.className = 'card-endereco';
+        cardEndereco.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"></path>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
+            </svg>
+            <span>${bloco.Local}</span><br>
+            <p>${bloco.Subprefeitura}</p>
+        `;
+       
+    
         // Adiciona a div infoCard ao card
         card.appendChild(infoCard);
-
+        card.appendChild(cardEndereco);
         return card;
     }
+    
+    
 
     // Adiciona um ouvinte de evento ao botão de pesquisa
     const botaoPesquisa = document.getElementById('botaoPesquisa');
     if (botaoPesquisa) {
         botaoPesquisa.addEventListener('click', realizarPesquisa);
     }
+     // Adiciona um ouvinte de evento ao botão de Filtros
+    const botaoFiltrar = document.getElementById('botaoFiltrar');
+    if (botaoFiltrar) {
+    botaoFiltrar.addEventListener('click', realizarPesquisa);
+    }
 
     // Chama a função para obter blocos por data ao carregar a página
     obterBlocosPorData('');
+
+    function adicionarOuvintesDeEventos() {
+        var buttons = document.querySelectorAll('.add-list-link');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                let blocoId = button.getAttribute('data-bloco-id');
+                salvarBlocoNaLista(blocoId);
+            });
+        });
+    }
+      
+
+
+/* function chamarMinhaLista() {
+    // Codifica a lista de blocos
+    let dadosCodificados = btoa(JSON.stringify(blocosSalvos));
+  
+    // Cria o link para a lista do usuário
+    let link = `/minhalista/${dadosCodificados}`;
+  
+    // Chama a rota /minhalista com os dados codificados
+    fetch(link)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Aqui você pode adicionar a lógica para criar os cards com os dados recebidos
+        adicionarCardsAoContainer(data);
+      })
+      .catch(error => console.error('Erro:', error));
+  } */
+
 });
+
+//Sidebar
+
+
+
+
+
