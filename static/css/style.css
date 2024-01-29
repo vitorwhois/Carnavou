@@ -14,30 +14,68 @@
     --dark-80:#1E2022;
     --dark-600:#45434C;
     --dark-400:#8D8A92;
+    --fundo:#F8F8F5;
 }
 body {
     font-family: 'Inter', sans-serif !important;
+    background-color: var(--fundo);
 }
-h1 {
-    font-family: 'Merriweather', serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    letter-spacing: -0.32px;
-    color: var(--dark-80);
+.corpo {
+    max-width: 600px !important;
 }
 
+h1 {
+    color: var(--Dark-800, #1E2022);
+    font-family: Merriweather;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.64px;
+    align-self: stretch;
+}
+h1 strong {
+    font-weight: 900;
+}
 a {
     text-decoration: none;
 }
-
+.pesquisar-filtrar{
+  gap: 12px;
+} 
+p {
+    color: var(--Dark-600, #45434C);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+.card p {
+    color: var(--Dark-400, #8D8A92);
+}
 .pesquisar{
     border-radius: 16px;
     border: 2px solid var(--roxo-200);
     background: #FFF;
     height: 56px;
+    margin-bottom: 24px;
 }
+
+.btn-pesquisar {
+    width: calc(100% - 77px - 12px); /* 100% - largura do botão Filtrar - gap */
+}
+#botao-filtrar{
+    display: flex;
+    padding: 14px;
+    flex-direction: column;
+    align-items: center;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 77px;
+}
+
 /*select pesquisa */
 .custom-select{
     width: 341px;
@@ -56,22 +94,7 @@ option {
     font-weight: 400;
     line-height: 22px
     }
-#inputGroupSelectData{
-    color: #000;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px
-}
-#inputGroupSelectData option {
-    color: #000;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-}
+
 
 .btn-outline-primary{
     background-color: var(--roxo-500);
@@ -114,10 +137,22 @@ option {
 .btn-outline-secondary:hover{
     background-color: var(--roxo-500);
 }
+.btn-salvar{
+    display: flex;
+    padding: 4px 8px 4px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--Lima-400, #E3EB89);
+    border: none;
+    text-decoration: none!important;
+    color: var(--Lima-800, #3D410D);
+    height: 32px;
+}
 
 #navbar {
     background-color: var(--verde-500)  ;
-    max-height: 72px;
+    max-height: 61px;
     text-decoration: none;
     color: var(--pretume);
 }
@@ -133,34 +168,51 @@ option {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-height: 57px;    
+    max-height: 57px;  
+}
+
+.navbar-nav{
+    gap: 64px;
 }
 .nav-link {
-    color:var(--pretume);
+    color: var(--Roxo-500, #682B7D);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
-.corpo {
-    max-width: 800px !important;
+.active {
+    font-weight: 800;
 }
 
-.agenda h4{
-    color: var(--dark-400);
-    font-family: Inter;
+.banner-home{
+    min-height: 180px;
+    max-height: 200px;
+    width: 100vw;
+}
+
+
+.agenda {
+    margin-top: 80px;
+}
+.agenda h2{
+    color: var(--dark-400, #8D8A92);
+    font-family: Merriweather;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 32px;
+}
+ h3 {
+    color: var(--Dark-800, #1E2022);
+    font-family: Merriweather;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
-
-.agenda h2 {
-    color: var(--pretume, #000);
-    font-family: Inter;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
 /* Card dos blocos */
 .card {
     padding: 24px 16px;
@@ -168,6 +220,8 @@ option {
     border-radius: 16px;
     border: 2px solid var(--Roxo-200, #F3EBF6);
     background: #FFF;
+    margin-bottom: 12px;
+    height: 208px;
 }
 .card-titulo {
     font-size: 18px;
@@ -175,11 +229,6 @@ option {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.card-titulo a {
-    text-decoration: none;
 }
 
 .info-card {
@@ -232,8 +281,9 @@ option {
     font-weight: 400;
     line-height: normal;
 }
-
-/* conferir */
+.info-card span{
+    padding-left: 8px;
+}
 .card-endereco {
     color: var(--pretume, #000);
     font-family: Inter;
@@ -242,64 +292,31 @@ option {
     font-weight: 400;
     line-height: normal;
 }
-
-/* conferir */
-.card-data{
-    color: var(--pretume, #000);
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
+.card-endereco span{
+    color: var(--Dark-800, #1E2022);
+    line-height: 22px; 
+    text-decoration-line: underline;
+    padding-left: 8px;
+}
+.card-endereco p {
+    color: var(--Dark-400, #8D8A92);
     font-weight: 400;
-    line-height: normal;
+    line-height: 22px;
+    padding-left: 36px;
 }
 
-.categorias {
-    color: var(--pretume, #000);
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
+.card-data{
+    color: var(--Dark-800, #1E2022);
+
     font-weight: 400;
     line-height: 22px;
 }
-.categorias-valor{
-    color: var(--pretume, #000);
-    text-align: center;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px; 
-
-
-}
-.categorias-valor ul{
-    text-decoration: none !important;
-    list-style: none;
-    padding: 0px;
-
-}
-.categorias-valor li {
-    border-radius: 12px;
-    border: 1px solid var(--roxo-300, #DBCDDF);
-    background: var(--roxo-100, #FEFAFF);
-    padding: 5px;
-    margin-right: 4px;
-    
-}
-
-.compartilhar-bloco{
+.card svg {
     color: var(--dark-600);
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration-line: underline;
 }
-.border-line{
-    border-color: var(--roxo-200);
+.card-titulo svg {
+    color: var(--Lima-800);
 }
-
 .outros h3{
     color: var(--dark-80, #1E2022);
     font-family: Merriweather;
@@ -355,13 +372,13 @@ footer span {
     font-weight: 700;
     line-height: 20px;
 }
-.offcanvas-body input {
+/* .offcanvas-body input {
     width: 341px;
     padding: 16px;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 24px;
-}
+} */
 
  .side-btn {
     width: 341px;

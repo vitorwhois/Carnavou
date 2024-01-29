@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light sticky-top " id="navbar">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="/static/images/Logo.png" alt="Logo" width="151px">
+                <img src="/static/images/carnavou-logo-nav.png" alt="Logo" width="110px">
             </a>
     
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">HOME</a>
+                        <a class="nav-link active"  active href="/templates/index.html">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="ChamaLista()"  >MINHA LISTA</a>
@@ -36,28 +36,29 @@
             </div>
         </div>
     </nav>
+    <div class="hero">
+        <!-- imagen distorcendo com 180px  --> 
+        <img src="/static/images/banner-home.png" class="banner-home" alt="">
+    </div>
 
     <section class="container mt-5 pt-5 corpo">
-        <h1>Eu quero é botar o meu bloco na rua</h1>
+        <h1>Eu quero é botar <br>
+        <strong>meu bloco na rua</strong></h1>
         <p>Todos os <strong>blocos de São Paulo</strong> na palma da sua mão.</p>
-        
+     
         <form class="mt-3">
             <div class="row">
                 <div class="col">
                     <input type="text" for="nomeInput" id="nomeInput" class="form-control pesquisar" placeholder="Pesquise pelo nome do bloco..."  aria-label="Pesquisar">
                 </div>
-
             </div>      
-            <div class="row mt-2 d-flex justify-content-center text-end">
-                <div class="col-10">
-                    <button id="botaoPesquisa" class="btn btn-outline-primary btn-pesquisar " type="button"  style="width: 100%;">Pesquisar</button>
-                </div>
-                <div class="col-2">
-                    <!-- Botão para abrir a sidebar -->
-                    <button class="btn btn-outline-secondary " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Filtrar</button>
-                </div>
+            <div class="d-flex justify-content-between text-end pesquisar-filtrar">
+                <button id="botaoPesquisa" class="btn btn-outline-primary flex-grow-1 me-3" type="button">Pesquisar</button>
+                <button id="botao-filtrar" class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="width: 77px;">Filtrar</button>
             </div>
         </form>
+
+
         <!-- Sidebar do filtro -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header d-flex justify-content-between align-items-center ">
@@ -72,7 +73,7 @@
 
                 </div>
 
-                <div class="input-group">
+                <div class="input-group ">
                     <select class="custom-select pesquisar" id="inputGroupSelectData">
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -89,44 +90,40 @@
                     <button class="btn btn-link ">Limpar Filtros</button>
                 </div>
 
+                <!-- teste -->
+
+
             </div>
           </div>
-        
     </section>
 
-    <section class="container mt-5 pt-5 corpo">
+    <section class="container corpo">
         <div class="agenda">
-            <h4>Agenda 2024</h4>
-            <h2 class="mt-4 pt-3">Pré Carnaval</h2>
+            <h2>Agenda 2024</h2>
+            <h3>Pré Carnaval</h3>
             <p>Até dia 08/02</p>
         </div>
         <div class="programacao ">
-            <div id="blocosContainer" class="container mt-5 pt-5 corpo">
+            <div id="blocosContainer" class="container corpo">
                 <!-- Os cards serão adicionados aqui dinamicamente -->
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="card-titulo">
                     <h3>Pirata</h3>
-                    <a href="#" class="add-list-link">Add a lista <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <button  class="add-list-link btn-salvar">Salvar <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                      </svg></a>
+                      </svg></button>
                 </div>
                 
                 <div class="info-card">
-                    <div class="card-data">
+                    <div class="card-data col-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
                           </svg>
-                        <span>17/12/24</span>
+                        <span>17/12</span>
                     </div>
-                    <div class="card-endereco">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                          </svg>
-                        <span>Endereço</span>
-                    </div>
-                    <div class="card-horario">
+
+                    <div class="card-horario col-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                             <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
@@ -135,27 +132,19 @@
                     </div>
                 </div>
                 
-                <div class="categorias">
-                    Categorias
-                </div>
-                <div class="categorias-valor">
-                    <ul class="d-flex">
-                        <li>Fanfarra</li>
-                        <li>Cortejo</li>
-                    </ul>
-                </div>
-            
-                <div class="border-line"></div>
-            
-                <div class="compartilhar-bloco">
-                    Compartilhar 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                <div class="card-endereco">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                       </svg>
-                </div>
+                    <span>Avenida Ibirapuera n 1300</span><br>
+                    <p>Pinheiros</p>
+                </div>          
             </div>
 
-            <div class="card">
+
+<!-- card de teste -->
+<!--             <div class="card">
                 <div class="card-titulo">
                     <h3>Pyranha</h3>
                     <a href="#" class="add-list-link">Add a lista <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -204,7 +193,7 @@
                         <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
                       </svg>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
