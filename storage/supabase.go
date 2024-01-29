@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
+//	"os"
 
-	"github.com/joho/godotenv"
+//	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
