@@ -281,7 +281,7 @@ option {
     font-weight: 400;
     line-height: normal;
 }
-.info-card span{
+.info-card a{
     padding-left: 8px;
 }
 .card-endereco {
@@ -292,7 +292,7 @@ option {
     font-weight: 400;
     line-height: normal;
 }
-.card-endereco span{
+.card-endereco a{
     color: var(--Dark-800, #1E2022);
     line-height: 22px; 
     text-decoration-line: underline;
@@ -387,7 +387,24 @@ footer span {
 
 } 
 
+#blocosContainer h2{
+    margin-top: 82px;
+    margin-bottom: 32px;
+    color: var(--Dark-800, #1E2022);
+    font-family: Merriweather;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 /* Responsivo */
+@media (min-width:990px){
+    #navbar {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+}
 @media (max-width: 990px) {
     .nav-link {
         background-color: white;

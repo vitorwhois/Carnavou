@@ -146,8 +146,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function adicionarCardsAoContainer(blocosPorData) {
         const blocosContainer = document.getElementById('blocosContainer');
 
-        // Limpar qualquer conteúdo existente no contêiner
-        blocosContainer.innerHTML = '';
+     // Limpar qualquer conteúdo existente no contêiner
+     blocosContainer.innerHTML = '';
+
+     // Adicionar o h2 com o texto "Resultados da busca"
+     const tituloResultado = document.createElement('h2');
+     tituloResultado.textContent = 'Resultados da busca';
+     blocosContainer.appendChild(tituloResultado);
 
         // Adicionar os cards ao contêiner
         blocosPorData.forEach(bloco => {
@@ -209,15 +214,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const cardEndereco = document.createElement('div');
         cardEndereco.className = 'card-endereco';
         cardEndereco.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"></path>
-                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
-            </svg>
-            <span>${bloco.Local}</span><br>
-            <p>${bloco.Subprefeitura}</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"></path>
+        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
+    </svg>
+    <a href="https://www.google.com/maps/search/${bloco.Local}" target="_blank">${bloco.Local}</a><br>
+    <p>${bloco.Subprefeitura}</p>
         `;
        
-    
+    //<span>${bloco.Local}A</span>
         // Adiciona a div infoCard ao card
         card.appendChild(infoCard);
         card.appendChild(cardEndereco);
@@ -252,24 +257,57 @@ document.addEventListener('DOMContentLoaded', function () {
       
 
 
-/* function chamarMinhaLista() {
-    // Codifica a lista de blocos
-    let dadosCodificados = btoa(JSON.stringify(blocosSalvos));
-  
-    // Cria o link para a lista do usuário
-    let link = `/minhalista/${dadosCodificados}`;
-  
-    // Chama a rota /minhalista com os dados codificados
-    fetch(link)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // Aqui você pode adicionar a lógica para criar os cards com os dados recebidos
-        adicionarCardsAoContainer(data);
-      })
-      .catch(error => console.error('Erro:', error));
-  } */
+    // Adiciona a div para os cards abaixo da div agenda
+    const agendaContainer = document.querySelector('.agenda');
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'cards-container';
+    agendaContainer.appendChild(cardsContainer);
 
+    // Chama a função para obter blocos por data ao carregar a página
+    obterBlocosAgenda('03/02/2024');
+
+    function adicionarCardsNaAgenda(cards) {
+        // Adiciona os 5 cards ao contêiner
+        cards.forEach(bloco => {
+            const card = criarCard(bloco);
+            cardsContainer.appendChild(card);
+        });
+    }
+
+    function obterBlocosAgenda() {
+        // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
+        const url = `/blocosPorData?data=03/02/2024`;
+        console.log();
+        console.log(url);
+
+        // Faz uma solicitação GET para o servidor
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => {
+            // Verifica se a resposta está OK
+            if (!response.ok) {
+                throw new Error(`Erro na solicitação: ${response.status}`);
+            }
+            // Converte a resposta para JSON
+            return response.json();
+        })
+        .then(data => {
+            // Manipula os dados recebidos (no formato JSON)
+            console.log("Blocos recebidos:", data);
+
+            // Chama a função para adicionar os cards ao container com os dados recebidos
+            adicionarCardsNaAgenda(data);
+            adicionarOuvintesDeEventos();
+        })
+        .catch(error => {
+            // Lida com erros durante a solicitação
+            console.error("Erro durante a solicitação:", error.message);
+        });
+    }
 });
 
 //Sidebar
