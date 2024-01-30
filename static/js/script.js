@@ -2,6 +2,7 @@
     let blocoId;
     let blocosSalvos = [];
 
+
 function salvarBlocoNaLista(blocoId) {
   console.log(blocoId);
 
@@ -25,6 +26,20 @@ function ChamaLista (){
 
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener('DOMContentLoaded', function () {
+
+    let quantidadeBlocosCarregados = 0;
+    const blocosPorPagina = 5;
+
+    // Adiciona um ouvinte de evento ao botão "Próximos blocos"
+    const btnProximos = document.getElementById('btn-proximos');
+    if (btnProximos) {
+        btnProximos.addEventListener('click', function () {
+            // Carrega mais 5 blocos (ou a quantidade desejada)
+            obterBlocosAgenda(blocosPorPagina, quantidadeBlocosCarregados);
+        });
+    }
+        // Chama a função para obter os primeiros 5 blocos ao carregar a página
+        obterBlocosAgenda(blocosPorPagina, quantidadeBlocosCarregados);
 
   // Adiciona um ouvinte de evento ao campo de pesquisa
   const campoPesquisa = document.getElementById('nomeInput');
@@ -271,10 +286,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function obterBlocosAgenda() {
+    function obterBlocosAgenda(quantidade, startIndex) {
         // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
         const url = `/blocosPorData?data=03/02/2024`;
-        console.log();
         console.log(url);
 
         // Faz uma solicitação GET para o servidor
@@ -284,26 +298,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 'X-Requested-With': 'XMLHttpRequest',
             },
         })
-        .then(response => {
-            // Verifica se a resposta está OK
-            if (!response.ok) {
-                throw new Error(`Erro na solicitação: ${response.status}`);
-            }
-            // Converte a resposta para JSON
-            return response.json();
-        })
-        .then(data => {
-            // Manipula os dados recebidos (no formato JSON)
-            console.log("Blocos recebidos:", data);
+            .then(response => {
+                // Verifica se a resposta está OK
+                if (!response.ok) {
+                    throw new Error(`Erro na solicitação: ${response.status}`);
+                }
+                // Converte a resposta para JSON
+                return response.json();
+            })
+            .then(data => {
+                // Manipula os dados recebidos (no formato JSON)
+                console.log("Blocos recebidos:", data);
 
-            // Chama a função para adicionar os cards ao container com os dados recebidos
-            adicionarCardsNaAgenda(data);
-            adicionarOuvintesDeEventos();
-        })
-        .catch(error => {
-            // Lida com erros durante a solicitação
-            console.error("Erro durante a solicitação:", error.message);
-        });
+                // Verifica se há blocos suficientes para carregar
+                if (startIndex < data.length) {
+                    // Chama a função para adicionar os 5 cards ao contêiner
+                    adicionarCardsNaAgenda(data.slice(startIndex, startIndex + quantidade));
+                    quantidadeBlocosCarregados += quantidade;
+                    adicionarOuvintesDeEventos();
+                } else {
+                    console.log('Não há mais blocos para carregar.');
+                }
+            })
+            .catch(error => {
+                // Lida com erros durante a solicitação
+                console.error("Erro durante a solicitação:", error.message);
+            });
     }
 });
 

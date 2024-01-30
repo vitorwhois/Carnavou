@@ -468,7 +468,7 @@ footer span {
 }
 .mapa-section{
     background: var(--Lima-400, #E3EB89);
-    height: 452px;
+    min-height: 452px;
 
 }
 .cade-bloco{
