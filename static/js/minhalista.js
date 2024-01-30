@@ -87,8 +87,8 @@ function obterBlocosPorID() {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
         <h3>${bloco.Nome}</h3>
-        <button class="remover btn-card" data-bloco-id="${bloco.ID}">Remover <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+        <button class="remover btn-card" data-bloco-id="${bloco.ID}">Remover <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12H19" stroke="#3D410D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg></button>
     `;
         card.appendChild(cardTitulo);

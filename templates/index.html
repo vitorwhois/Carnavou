@@ -37,15 +37,14 @@
         </div>
     </nav>
     <div class="hero">
-        <!-- imagen distorcendo com 180px  --> 
-        <img src="/static/images/banner-home.png" class="banner-home" alt="">
+        <h1>Eu quero é botar <br>
+            <strong>meu bloco na rua</strong></h1>
+            <p>Todos os <strong>blocos de São Paulo</strong> na palma da sua mão.</p>
     </div>
 
-    <section class="container mt-5 pt-5 corpo">
-        <h1>Eu quero é botar <br>
-        <strong>meu bloco na rua</strong></h1>
-        <p>Todos os <strong>blocos de São Paulo</strong> na palma da sua mão.</p>
-     
+    <section class="container mt-5 corpo campo-pesquisa">
+
+     <h4>Pesquise pelo bloco</h4>
         <form class="mt-3">
             <div class="row">
                 <div class="col">
@@ -105,75 +104,40 @@
             </div>
             <div class="agenda">
                 <h2>Agenda 2024</h2>
-                <h3>Pré Carnaval</h3>
+                <h3>Pré Carnaval 🎉</h3>
                 <p>Até dia 08/02</p>
             </div>
-
-<!-- card de teste -->
-<!--             <div class="card">
-                <div class="card-titulo">
-                    <h3>Pyranha</h3>
-                    <a href="#" class="add-list-link">Add a lista <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                      </svg></a>
-                </div>
-                
-                <div class="info-card">
-                    <div class="card-data">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-                          </svg>
-                        <span>17/12/24</span>
-                    </div>
-                    <div class="card-endereco">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                          </svg>
-                        <span>Endereço</span>
-                    </div>
-                    <div class="card-horario">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                          </svg>
-                        <span>10h</span>
-                    </div>
-                </div>
-                
-                <div class="categorias">
-                    Categorias
-                </div>
-                <div class="categorias-valor">
-                    <ul class="d-flex">
-                        <li>Fanfarra</li>
-                        <li>Cortejo</li>
-                    </ul>
-                </div>
-            
-                <div class="border-line"></div>
-            
-                <div class="compartilhar-bloco">
-                    Compartilhar 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
-                      </svg>
-                </div>
-            </div> -->
+            <button id="btn-proximos" class="btn btn-outline-primary" type="button">Próximos blocos</button>
         </div>
     </section>
 
-    <section class="container mt-5 pt-5 corpo">
+    <!-- <section class="container mt-5 pt-5 corpo">
             <div class="outros">
                 <h3>Sabe de algum outro bloco?</h3>
                 <p>Manda as informações do bloco pra gente incluir e ajudar mais foliões a aproveitar o <strong>Carnavou</strong>.</p>
                 <button type="button" class="btn btn-light" style="width: 100%">Enviar informações </button>
             </div>
+    </section> -->
+
+    <section class="mapa-section">
+        <div class="container corpo d-flex flex-row cade-bloco">
+            <h2>Cadê o bloco?</h2>
+            <span><strong>Mapa dos blocos</strong> de São Paulo pra nenhum folião ficar perdido!</span>
+        </div>
+        <div class="mapa-blocos container corpo">
+            <iframe   width="100%"
+            height="234"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/d/embed?mid=1Pck6kcz2kAV45nvNmJrJzj5tk7neDmg&ehbc=2E312F&noprof=1"></iframe>
+        </div>
 
     </section>
 
-    <footer class="mt-5 footer-Conteudo ">
-        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 container mb-0 ">
+    <footer class="footer-Conteudo ">
+        <div class="d-flex flex-wrap justify-content-between align-items-center container mb-0 ">
             <div class="col-md-4 d-flex align-items-center">
               <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>

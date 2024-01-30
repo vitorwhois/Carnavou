@@ -18,7 +18,6 @@ var SupabaseDB *sql.DB
 
 func init() {
 	// Retirar para fazer o deploy no Render
-	
 //	if err := godotenv.Load(); err != nil {
 //		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
 //	}
