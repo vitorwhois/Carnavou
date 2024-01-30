@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
+//	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -19,9 +19,9 @@ var SupabaseDB *sql.DB
 func init() {
 	// Retirar para fazer o deploy no Render
 	
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
-	}
+//	if err := godotenv.Load(); err != nil {
+//		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
+//	}
 
 
 	supabaseUrl = os.Getenv("SUPABASE_URL")
