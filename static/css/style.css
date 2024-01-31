@@ -584,6 +584,7 @@ padding-right: 8px;
     background-size: cover; /* Ajusta o tamanho da imagem para caber completamente */
 }
 .meus-blocos{
+    margin-top: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -621,6 +622,9 @@ padding-right: 8px;
 }
 .btn-link img{
     padding-left: 8px;
+}
+.minha-lista{
+    margin-top: 32px;
 }
 /* Responsivo */
 @media (min-width:990px){
