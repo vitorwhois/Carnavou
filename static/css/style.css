@@ -383,6 +383,9 @@ option {
 .card-titulo svg {
     color: var(--Lima-800);
 }
+.outros{
+    margin-bottom: 48px;
+}
 .outros h3{
     color: var(--dark-80, #1E2022);
     font-family: Merriweather;
@@ -573,6 +576,52 @@ padding-right: 8px;
     color: #FFF;
 }
 
+/* minhalista */
+.hero-lista{
+    width: 100%;
+    height: 180px;
+    background: url('/static/images/banner-lantejoulas.png') no-repeat;
+    background-size: cover; /* Ajusta o tamanho da imagem para caber completamente */
+}
+.meus-blocos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.btn-compartilhar{
+    align-items: center;
+    gap: 8px;
+    width: 132px;
+    height: 35px;
+    border-radius: 8px;
+    background: var(--Roxo-500, #682B7D);
+}
+.modal-title{
+    color: var(--roxo-500);
+    font-family: Merriweather;
+    font-size: 24px;
+    font-weight: bold;
+}
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.modal-body button {
+    width: 190px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.36px;
+    color: var(--dark-600);
+}
+.modal-body button:hover{
+    color: var(--roxo-500);
+}
+.btn-link img{
+    padding-left: 8px;
+}
 /* Responsivo */
 @media (min-width:990px){
     #navbar {

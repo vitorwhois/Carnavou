@@ -169,5 +169,61 @@ function obterBlocosPorID() {
 });
 
 
+function copyToClipboard() {
+    try {
+        // Obtém a URL da página atual
+        var currentUrl = window.location.href;
 
+        // Verifica se a URL está vazia
+        if (!currentUrl) {
+            throw new Error('Não foi possível obter a URL da página.');
+        }
 
+        // Define o atributo data-url no botão com a URL
+        var copyButton = document.getElementById('copyButton');
+        copyButton.setAttribute('data-url', currentUrl);
+
+        // Cria um elemento input
+        var dummy = document.createElement('input');
+        
+        // Define o valor do input para a URL atual
+        dummy.value = currentUrl;
+
+        // Adiciona o input ao documento
+        document.body.appendChild(dummy);
+
+        // Seleciona o texto do input
+        dummy.select();
+
+        // Cria um intervalo (range) para selecionar o texto
+        var range = document.createRange();
+        range.selectNode(dummy);
+
+        // Cria uma seleção e a adiciona ao intervalo
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        // Copia o texto
+        document.execCommand('copy');
+
+        // Remove o input do documento
+        document.body.removeChild(dummy);
+
+        // Limpa a seleção
+        selection.removeAllRanges();
+
+        // Altera o texto do botão e desabilita
+        copyButton.innerHTML = 'Link copiado';
+        copyButton.disabled = true;
+
+        // Opcional: Desabilitar novamente após alguns segundos
+        setTimeout(function() {
+            copyButton.innerHTML = 'Copiar Link<img src="/static/images/copy.svg" alt="Imagem de Copiar Link">';
+            copyButton.disabled = false;
+        }, 3000); // 3000 milissegundos (3 segundos)
+    } catch (error) {
+        console.error('Erro ao copiar link:', error.message);
+        alert('Erro ao copiar link: ' + error.message);
+    }
+}
