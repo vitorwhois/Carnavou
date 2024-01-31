@@ -110,6 +110,7 @@ p {
     margin-bottom: 24px;
 }
 
+
 .btn-pesquisar {
     width: calc(100% - 77px - 12px); /* 100% - largura do botão Filtrar - gap */
 }
@@ -412,12 +413,16 @@ option {
 }
 footer{
     background-color: var(--roxo-700);
+    max-height: 323px;
 }
 footer span {
     color: var(--roxo-100);
 }
 
 /* Sidebar */
+.offcanvas{
+    background-color: var(--fundo);
+}
 .offcanvas-body{
     width: 341px;
 }
@@ -513,6 +518,61 @@ footer span {
     border-radius: 16px;
 }
 
+ul, li{
+    padding: 0;
+    margin: 0;
+}
+
+.footer-Conteudo{
+    justify-content: space-between;
+    padding-top: 48px;
+}
+.footer-Conteudo ul {
+    gap: 16px;
+}
+.footer-redes {
+    padding-top: 34px;
+}
+.footer-redes img{
+padding-right: 8px;
+}
+.footer-Conteudo ul, .footer-Conteudo li {
+    list-style: none;
+}
+
+.footer-Conteudo a {
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+.footer-Conteudo h4 {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;    
+}
+
+.footer-contato{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 48px;
+}
+.footer-contato a {
+    text-decoration:underline;
+    color: #FFF;
+}
+
 /* Responsivo */
 @media (min-width:990px){
     #navbar {
@@ -545,6 +605,18 @@ footer span {
     .card-horario {
         margin-right: -10px;
     }
+    .hero h1 {
+        font-size: 36px;
+    }
+  
+
+    .cade-bloco{
+        flex-direction: column!important;
+    }
+    .cade-bloco h2{
+        font-size: 28px;
+    }
+    
   }
 
   .endereco-column svg {
