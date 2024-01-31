@@ -1,27 +1,23 @@
 package storage
-
 import (
 	"database/sql"
 	"fmt"
 	"log"
 	"os"
-
 //	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
-
 var (
 	supabaseUrl, supabaseKey, postgresHost, postgresPassword string
 )
-
 var SupabaseDB *sql.DB
 
 func init() {
 	// Retirar para fazer o deploy no Render
+
 //	if err := godotenv.Load(); err != nil {
 //		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
 //	}
-
 	supabaseUrl = os.Getenv("SUPABASE_URL")
 	supabaseKey = os.Getenv("SUPABASE_KEY")
 	postgresHost = os.Getenv("POSTGRES_HOST")
