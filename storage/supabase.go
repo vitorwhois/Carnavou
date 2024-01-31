@@ -22,7 +22,6 @@ func init() {
 //		log.Fatal("Erro ao carregar as variáveis de ambiente:", err)
 //	}
 
-
 	supabaseUrl = os.Getenv("SUPABASE_URL")
 	supabaseKey = os.Getenv("SUPABASE_KEY")
 	postgresHost = os.Getenv("POSTGRES_HOST")

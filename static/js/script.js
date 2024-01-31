@@ -15,7 +15,6 @@ function salvarBlocoNaLista(blocoId) {
   console.log(blocosSalvos);
 }
 
-
 function ChamaLista (){
     let lista = blocosSalvos;
     console.log(blocosSalvos);
