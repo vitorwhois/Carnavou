@@ -589,6 +589,7 @@ padding-right: 8px;
 }
 .btn-compartilhar{
     align-items: center;
+    font-family: Inter;
     gap: 8px;
     width: 132px;
     height: 35px;
@@ -623,7 +624,25 @@ padding-right: 8px;
 .minha-lista{
     margin-top: 32px;
 }
+.minha-lista h6 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.btn-blocos{
+    font-family: Inter;
+    align-items: center;
+    gap: 8px;
+    width: 141px;
+    height: 35px;
+    border-radius: 8px;
+    background: var(--lima-400);
+    border: none;
+    margin-top: 32px;
+    margin-bottom: 282px;
+}
 
+/* minhalista Fim */
 .container {
     max-width: 624px!important;
   }

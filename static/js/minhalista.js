@@ -29,6 +29,7 @@ function obterBlocosPorID() {
     // Verifica se há IDs na URL
     if (!ids) {
     console.error("IDs de blocos não encontrados na URL.");
+    mostrarErroSemBlocos();
     return;
 }
     // Faz uma solicitação GET para buscar os blocos correspondentes
@@ -58,7 +59,31 @@ function obterBlocosPorID() {
         });
 }
         
+    function mostrarErroSemBlocos() {
+        const blocosContainer = document.getElementById('blocosContainer');
 
+        // Limpar qualquer conteúdo existente no contêiner
+        blocosContainer.innerHTML = '';
+
+        const tituloErro = document.createElement('h5');
+        tituloErro.textContent = 'Você ainda não adicionou blocos à sua lista. Que tal buscar alguns?';
+        blocosContainer.appendChild(tituloErro);
+
+        const instrucaoErro = document.createElement('h6');
+        instrucaoErro.innerHTML = 'Pra adicionar algum bloco, é só clicar no botão "<strong>Salvar</strong>” dentro do card do bloco escolhido. 😉';
+        blocosContainer.appendChild(instrucaoErro);
+    
+
+        const botaoBusca = document.createElement('button');
+        botaoBusca.className = 'btn-blocos';
+        botaoBusca.textContent = 'Buscar blocos';
+        blocosContainer.appendChild(botaoBusca);
+
+        // Adiciona um evento de clique para redirecionar para "/index.html"
+        botaoBusca.addEventListener('click', function () {
+        window.location.href = '/index.html';
+    });
+    }
 
     // Função para adicionar os cards ao contêiner com base nos dados recebidos
     function adicionarCardsAoContainer(blocosPorId) {
