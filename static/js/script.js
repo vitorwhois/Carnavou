@@ -205,7 +205,7 @@ function adicionarCardsAoContainer(blocosPorData) {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
             <h3>${bloco.Nome}</h3>
-            <button class="add-list-link btn-card" data-bloco-id="${bloco.ID}">Salvar<img src="/static/images/Plus.svg" alt="Soma Icon" width="24" height="24"</img>
+            <button class="add-list-link btn-card" data-bloco-id="${bloco.ID}">Salvar<img src="/static/images/plus.svg" alt="Soma Icon" width="24" height="24"</img>
             </button>
         `;
         card.appendChild(cardTitulo);
@@ -279,7 +279,7 @@ function adicionarCardsAoContainer(blocosPorData) {
                 salvarBlocoNaLista(blocoId);
                 
                 // Altera o texto do botão e desabilita
-                button.innerHTML = 'Salvo <img src="/static/images/Check.svg" alt="Check Icon" width="24" height="24"</img>';
+                button.innerHTML = 'Salvo <img src="/static/images/check.svg" alt="Check Icon" width="24" height="24"</img>';
                 button.disabled = true;
 
                 salvarBlocoNaLista(blocoId);
