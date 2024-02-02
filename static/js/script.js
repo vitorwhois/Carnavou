@@ -266,9 +266,6 @@ function adicionarCardsAoContainer(blocosPorData) {
     botaoFiltrar.addEventListener('click', realizarPesquisa);
     }
 
-    // Chama a função para obter blocos por data ao carregar a página
-    obterBlocosPorData('');
-
     function adicionarOuvintesDeEventos() {
         var buttons = document.querySelectorAll('.add-list-link');
         buttons.forEach(button => {
@@ -283,6 +280,7 @@ function adicionarCardsAoContainer(blocosPorData) {
                 salvarBlocoNaLista(blocoId);
             });
         });
+        
     }
       
 
@@ -343,13 +341,10 @@ function adicionarCardsAoContainer(blocosPorData) {
                 console.error("Erro durante a solicitação:", error.message);
             });
     }
-
-    document.addEventListener('click', function(event) {
-        var isClickInside = document.getElementById('navbar').contains(event.target);
-        var isOpen = document.getElementById('navbar').classList.contains('show');
-        if (!isClickInside && isOpen) {
-            document.querySelector('.navbar-toggler').click();
-        }
+    document.getElementById("botaoLimpar").addEventListener("click", function() {
+        document.getElementById("nomeInput").value = "";
+        document.getElementById("dataInput").value = "";
+        document.getElementById("localInput").value = "";
     });
 });
 

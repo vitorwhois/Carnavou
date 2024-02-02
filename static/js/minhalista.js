@@ -70,9 +70,8 @@ function obterBlocosPorID() {
         blocosContainer.appendChild(tituloErro);
 
         const instrucaoErro = document.createElement('h6');
-        instrucaoErro.innerHTML = 'Pra adicionar algum bloco, é só clicar no botão "<strong>Salvar</strong>” dentro do card do bloco escolhido. 😉';
+        instrucaoErro.innerHTML = 'Pra adicionar algum bloco, é só clicar no botão "<b>Salvar</b>” dentro do card do bloco escolhido. <br> Depois de salvar <b>todos</b> os blocos, clique na aba Minha Lista. 😉';
         blocosContainer.appendChild(instrucaoErro);
-    
 
         const botaoBusca = document.createElement('button');
         botaoBusca.className = 'btn-blocos';
