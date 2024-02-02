@@ -315,6 +315,7 @@ option {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-right: 12px;
 }
 .add-list-link{
     color: var(--dark-600);
