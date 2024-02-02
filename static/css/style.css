@@ -23,13 +23,21 @@ body {
 .hero {
     position: relative;
     width: 100%;
-    height: 317px;
+    height: 314px;
     background: linear-gradient(0deg, rgba(57, 5, 75, 0.56) 0%, rgba(57, 5, 75, 0.56) 100%), url('/static/images/banner-home.png');
-    background-size: cover; /* Ajusta o tamanho da imagem para caber completamente */
+    background-size:cover; /* Ajusta o tamanho da imagem para caber completamente */
     background-position: center; /* Centraliza a imagem */
+    padding: 20px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+hero-content{
     color: white; /* Cor do texto, ajuste conforme necessário */
     text-align: center; /* Centraliza o texto */
-    padding: 20px;
+
 }
 
 
@@ -49,7 +57,7 @@ h1 {
     font-family: Merriweather;
     font-size: 64px;
     font-style: normal;
-    font-weight: 300;
+
     line-height: normal;
     letter-spacing: -0.64px;
     padding-top: 62px;
@@ -58,14 +66,12 @@ h1 {
 .hero strong {
     font-weight: 900;
 }
-
-/* Estilos para o p */
 .hero p {
     color: #FFF;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: normal;
     font-style: normal;
-    font-weight: 700;
     line-height: normal;
     margin: 0;
     padding-bottom: 62px;
@@ -218,7 +224,7 @@ option {
 }
 
 .navbar-nav{
-    gap: 64px;
+    gap: 32px;
 }
 .nav-link {
     color: var(--Roxo-500, #682B7D);
@@ -657,13 +663,33 @@ padding-right: 8px;
 }
 @media (max-width: 990px) {
     .nav-link {
-        background-color: white;
+        color: var(--lima-400);
     }
 
     #navbarNav {
-        margin-top: 30px;
+        margin-top: 13px;
+        background-color: var(--roxo-700);
+    }
+    .navbar-collapse {
+        flex-basis: 100%;
+        flex-grow: 1;
         align-items: center;
-        justify-content: center;
+    }
+    .navbar-nav {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .nav-item {
+        background-color: var(--roxo-700);
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+    #navbar a.active {
+    font-weight: bold;
+    color: var(--lima-400);
+    }
+    .nav-item:last-child{
+        margin-bottom: 32px;
     }
   }
   @media (max-width: 599px){
@@ -680,18 +706,34 @@ padding-right: 8px;
     .card-horario {
         margin-right: -10px;
     }
-    .hero h1 {
-        font-size: 36px;
+    .hero{
+        height: 254px;
+        padding-left: 12px;
+        padding-right: 12px;
+        background-size: cover;
     }
-  
-
+    .hero h1 {
+        font-size: 40px;
+    }
     .cade-bloco{
         flex-direction: column!important;
     }
     .cade-bloco h2{
         font-size: 28px;
     }
-    
+    .navbar-nav {
+        gap: 24px;
+    }
+    .collapse {
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+    button img {
+        width: 18px;
+        height: 18px;
+    }
+    .btn-card{
+        padding: 4px 8px 4px 12px;
+    }
   }
   .endereco-column svg {
     margin-right: 8px; 

@@ -112,7 +112,7 @@ function obterBlocosPorID() {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
         <h3>${bloco.Nome}</h3>
-        <button class="remover btn-card" data-bloco-id="${bloco.ID}">Remover <img src="/static/images/plus.svg" alt="Soma Icon" width="24" height="24"</img></button>
+        <button class="remover btn-card" data-bloco-id="${bloco.ID}">Remover <img src="/static/images/trash.svg" alt="Excluir Icon" width="24" height="24"</img></button>
     `;
         card.appendChild(cardTitulo);
 

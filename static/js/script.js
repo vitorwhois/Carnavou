@@ -343,6 +343,14 @@ function adicionarCardsAoContainer(blocosPorData) {
                 console.error("Erro durante a solicitação:", error.message);
             });
     }
+
+    document.addEventListener('click', function(event) {
+        var isClickInside = document.getElementById('navbar').contains(event.target);
+        var isOpen = document.getElementById('navbar').classList.contains('show');
+        if (!isClickInside && isOpen) {
+            document.querySelector('.navbar-toggler').click();
+        }
+    });
 });
 
 //Sidebar
