@@ -239,7 +239,7 @@ function copyToClipboard() {
         selection.removeAllRanges();
 
         // Altera o texto do botão e desabilita
-        copyButton.innerHTML = 'Link copiado';
+        copyButton.innerHTML = 'Link copiado <img src="/static/images/Check.svg" alt="Check Icon" width="24" height="24"</img>';
         copyButton.disabled = true;
 
         // Opcional: Desabilitar novamente após alguns segundos

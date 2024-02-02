@@ -205,10 +205,7 @@ function adicionarCardsAoContainer(blocosPorData) {
         cardTitulo.style.justifyContent = 'space-between';
         cardTitulo.innerHTML = `
             <h3>${bloco.Nome}</h3>
-            <button class="add-list-link btn-card" data-bloco-id="${bloco.ID}">Salvar
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
-                </svg>
+            <button class="add-list-link btn-card" data-bloco-id="${bloco.ID}">Salvar<img src="/static/images/Plus.svg" alt="Soma Icon" width="24" height="24"</img>
             </button>
         `;
         card.appendChild(cardTitulo);
@@ -279,6 +276,12 @@ function adicionarCardsAoContainer(blocosPorData) {
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 let blocoId = button.getAttribute('data-bloco-id');
+                salvarBlocoNaLista(blocoId);
+                
+                // Altera o texto do botão e desabilita
+                button.innerHTML = 'Salvo <img src="/static/images/Check.svg" alt="Check Icon" width="24" height="24"</img>';
+                button.disabled = true;
+
                 salvarBlocoNaLista(blocoId);
             });
         });

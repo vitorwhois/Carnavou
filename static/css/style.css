@@ -623,6 +623,7 @@ padding-right: 8px;
 }
 .minha-lista{
     margin-top: 32px;
+    margin-bottom: 80px;
 }
 .minha-lista h6 {
     font-family: 'Inter', sans-serif;
@@ -639,7 +640,7 @@ padding-right: 8px;
     background: var(--lima-400);
     border: none;
     margin-top: 32px;
-    margin-bottom: 282px;
+    margin-bottom: 202px;
 }
 
 /* minhalista Fim */
