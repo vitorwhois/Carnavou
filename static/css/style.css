@@ -3,9 +3,9 @@
 }
 
 :root{
-    --verde-500: #EBFF01;
-    --verde-400: #E3EB89;
-    --verde-800:#3D410D;
+    --lima-500: #EBFF01;
+    --lima-400: #E3EB89;
+    --lima-800:#3D410D;
     --roxo-700:#380C48;
     --roxo-500:#682B7D;
     --roxo-200:#DBCDDF;
@@ -19,9 +19,6 @@
 body {
     font-family: 'Inter', sans-serif !important;
     background-color: var(--fundo);
-}
-.corpo {
-    max-width: 600px !important;
 }
 .hero {
     position: relative;
@@ -200,7 +197,7 @@ option {
 }
 
 #navbar {
-    background-color: var(--verde-500)  ;
+    background-color: var(--lima-500)  ;
     max-height: 61px;
     text-decoration: none;
     color: var(--pretume);
@@ -404,7 +401,7 @@ option {
 }
 .btn-light{
     border-radius: 16px;
-    background: var(--Verde-600, #E3EB89);
+    background: var(--lima-600, #E3EB89);
 }
 .btn-light:hover{
     background-color: var(--roxo-200);
@@ -554,7 +551,7 @@ padding-right: 8px;
     line-height: 22px;
 }
 .footer-Conteudo h4 {
-    color: #FFF;
+    color: var(--lima-500);
     text-align: center;
     font-family: Inter;
     font-size: 20px;
@@ -626,6 +623,11 @@ padding-right: 8px;
 .minha-lista{
     margin-top: 32px;
 }
+
+.container {
+    max-width: 624px!important;
+  }
+
 /* Responsivo */
 @media (min-width:990px){
     #navbar {

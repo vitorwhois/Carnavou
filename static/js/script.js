@@ -1,4 +1,4 @@
-    // Defina a var iável "blocoId" 
+ // Defina a var iável "blocoId" 
     let blocoId;
     let blocosSalvos = [];
 
@@ -156,24 +156,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Função para adicionar os cards ao contêiner com base nos dados recebidos
-    function adicionarCardsAoContainer(blocosPorData) {
-        const blocosContainer = document.getElementById('blocosContainer');
+// Função para adicionar os cards ao contêiner com base nos dados recebidos
+function adicionarCardsAoContainer(blocosPorData) {
+    const blocosContainer = document.getElementById('blocosContainer');
 
-     // Limpar qualquer conteúdo existente no contêiner
-     blocosContainer.innerHTML = '';
+    // Limpar qualquer conteúdo existente no contêiner
+    blocosContainer.innerHTML = '';
 
-     // Adicionar o h2 com o texto "Resultados da busca"
-     const tituloResultado = document.createElement('h2');
-     tituloResultado.textContent = 'Resultados da busca';
-     blocosContainer.appendChild(tituloResultado);
+    // Adicionar o h2 com o texto "Resultados da busca"
+    const tituloResultado = document.createElement('h2');
+    let buscaErro; // Declarar a variável de erro da busca fora if
 
-        // Adicionar os cards ao contêiner
-        blocosPorData.forEach(bloco => {
-            const card = criarCard(bloco);
-            blocosContainer.appendChild(card);
-        });
+    // Verificar se os dados estão vazios
+    if (blocosPorData === null || blocosPorData.length === 0) {
+        tituloResultado.textContent = 'Opa, não encontrei nenhum bloco 🧐';
+        buscaErro = document.createElement('p');
+        buscaErro.textContent = 'Não achei nenhum bloco correspondente a sua busca. Você pode tentar outra busca mudando os valores ou conferir a agenda do dia aqui:';
+        //Alterar o estilo do tituloResultado
+        tituloResultado.style.marginBottom = '8px'; 
+    } else {
+        tituloResultado.textContent = 'Resultados da busca';
     }
+
+    blocosContainer.appendChild(tituloResultado);
+
+    // Adicionar buscaErro ao contêiner apenas se estiver definido
+    if (buscaErro) {
+        blocosContainer.appendChild(buscaErro);
+    }
+
+    // Adicionar os cards ao contêiner
+    blocosPorData.forEach(bloco => {
+        const card = criarCard(bloco);
+        blocosContainer.appendChild(card);
+    });
+}
+
 
     function criarCard(bloco) {
         // Cria o elemento card
