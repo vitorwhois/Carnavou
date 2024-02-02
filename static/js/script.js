@@ -219,7 +219,7 @@ function adicionarCardsAoContainer(blocosPorData) {
         cardData.className = 'card-data col-6';
         const diaEMes = bloco.Data.substring(0, 5);
         cardData.innerHTML = `
-        <img src="/static/images/Calendar.svg" alt="Icon Calendario" width="24" height="24"
+        <img src="/static/images/calendar.svg" alt="Icon Calendario" width="24" height="24"
     </img>
             <span>${diaEMes}</span>
         `;
@@ -230,9 +230,8 @@ function adicionarCardsAoContainer(blocosPorData) {
         cardHorario.className = 'card-horario col-6';
         const duasPrimeirasHoras = bloco.Concentracao.substring(0, 2);
         cardHorario.innerHTML = `
-        <img src="/static/images/Clock.svg" alt="Icon Relogio" width="24" height="24"
-    </img>
-            <span>${duasPrimeirasHoras}h</span>
+        <img src="/static/images/clock.svg" alt="Icon Relogio" width="24" height="24"</img>
+        <span>${duasPrimeirasHoras}h</span>
         `;
         infoCard.appendChild(cardHorario);
     
@@ -240,7 +239,7 @@ function adicionarCardsAoContainer(blocosPorData) {
         const cardEndereco = document.createElement('div');
         cardEndereco.className = 'card-endereco endereco-column';
         cardEndereco.innerHTML = `
-        <img src="/static/images/Map_Pin.svg" alt="Map Pin Icon" width="24" height="24"
+        <img src="/static/images/map_pin.svg" alt="Map Pin Icon" width="24" height="24"
     </img>
     <div class="endereco-content">
     <a href="https://www.google.com/maps/search/${bloco.Local}" target="_blank">${bloco.Local}</a>
@@ -248,7 +247,6 @@ function adicionarCardsAoContainer(blocosPorData) {
 </div>
 `;
        
-    //<span>${bloco.Local}A</span>
         // Adiciona a div infoCard ao card
         card.appendChild(infoCard);
         card.appendChild(cardEndereco);

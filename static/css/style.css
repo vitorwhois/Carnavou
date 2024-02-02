@@ -640,11 +640,11 @@ padding-right: 8px;
     background: var(--lima-400);
     border: none;
     margin-top: 32px;
-    margin-bottom: 202px;
+    margin-bottom: 80px;
 }
 
 /* minhalista Fim */
-.container {
+.corpo {
     max-width: 624px!important;
   }
 
