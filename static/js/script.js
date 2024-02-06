@@ -292,7 +292,7 @@ function adicionarCardsAoContainer(blocosPorData) {
     agendaContainer.appendChild(cardsContainer);
 
     // Chama a função para obter blocos por data ao carregar a página
-    obterBlocosAgenda('03/02/2024');
+    obterBlocosAgenda('09/02/2024');
 
     function adicionarCardsNaAgenda(cards) {
         // Adiciona os 5 cards ao contêiner
@@ -304,7 +304,7 @@ function adicionarCardsAoContainer(blocosPorData) {
 
     function obterBlocosAgenda(quantidade, startIndex) {
         // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
-        const url = `/blocosPorData?data=03/02/2024`;
+        const url = `/blocosPorData?data=09/02/2024`;
         console.log(url);
 
         // Faz uma solicitação GET para o servidor
