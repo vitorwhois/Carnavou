@@ -53,6 +53,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Adiciona um ouvinte de evento ao botão de Pesquisa
+const botaoPesquisa = document.getElementById('botaoPesquisa');
+if (botaoPesquisa) {
+    botaoPesquisa.addEventListener('click', function () {
+        const nomeInput = document.getElementById('nomeInput').value;
+        if (nomeInput) {
+            pesquisarBlocosPorNome(nomeInput);
+        } else {
+            console.log('Por favor, insira um nome para pesquisar.');
+        }
+    });
+}
+
+
+
     // Função para realizar a pesquisa com base nos campos preenchidos
     function realizarPesquisa() {
         var nomeInput = document.getElementById('nomeInput').value;
@@ -415,7 +430,7 @@ function obterBlocosPorLocal(localInput) {
 
 });
 
-//Sidebar
+
 
 
 
