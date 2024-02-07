@@ -411,6 +411,8 @@ function obterBlocosPorLocal(localInput) {
         document.getElementById("dataInput").value = "";
         document.getElementById("localInput").value = "";
     });
+
+
 });
 
 //Sidebar
