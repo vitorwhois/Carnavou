@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const campoPesquisa = document.getElementById('nomeInput');
   if (campoPesquisa) {
     campoPesquisa.addEventListener('input', function () {
-      // Imprime o termo de pesquisa
-      console.log('Termo de pesquisa:', campoPesquisa.value);
 
       // Verifica se o campo de pesquisa está vazio
       if (campoPesquisa.value === '') {
@@ -118,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para pesquisar blocos por nome
     function pesquisarBlocosPorNome(nomeInput) {
-        // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorNomeHandler
+        // BlocosPorNomeHandler
         const url = `/pesquisarBlocos?nome=${nomeInput}`;
         console.log(nomeInput);
         console.log(url);
@@ -253,18 +251,85 @@ function adicionarCardsAoContainer(blocosPorData) {
         return card;
     }
     
-    
-
-    // Adiciona um ouvinte de evento ao botão de pesquisa
-    const botaoPesquisa = document.getElementById('botaoPesquisa');
-    if (botaoPesquisa) {
-        botaoPesquisa.addEventListener('click', realizarPesquisa);
-    }
      // Adiciona um ouvinte de evento ao botão de Filtros
     const botaoFiltrar = document.getElementById('botaoFiltrar');
     if (botaoFiltrar) {
-    botaoFiltrar.addEventListener('click', realizarPesquisa);
+    botaoFiltrar.addEventListener('click', filtrar);
     }
+
+    // Função para realizar a pesquisa com base no local e data
+    function filtrar() {
+    var dataInput = document.getElementById('dataInput').value;
+    var localInput = document.getElementById('localInput').value;
+
+    // Verificar se há dados nos campos de data e local
+    if (dataInput && localInput) {
+        // Se ambos os campos estiverem preenchidos, realizar pesquisa por data e local
+        ObterBlocosPorDataESubprefeitura(dataInput, localInput);
+    } else if (dataInput) {
+        // Se apenas o campo de data estiver preenchido, realizar pesquisa por data
+        obterBlocosPorData(dataInput);
+    } else if (localInput) {
+        // Se apenas o campo de local estiver preenchido, realizar pesquisa por local
+        obterBlocosPorLocal(localInput);
+    } else {
+        // Se nenhum campo estiver preenchido, exibir uma mensagem ou tomar outra ação
+        // Falta chamar tratamento de erro
+        console.log('Nenhum critério de pesquisa fornecido.');
+    }
+}
+function ObterBlocosPorDataESubprefeitura(dataInput, localInput) {
+    const url = `/filtro?data=${encodeURIComponent(dataInput)}&subprefeitura=${encodeURIComponent(localInput)}`;
+    console.log(dataInput,localInput);
+    // Faz uma solicitação GET para o servidor
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    })
+    .then(response => {
+        if (!response.ok){
+            throw new Error(`Erro na solicitação: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        adicionarCardsAoContainer(data);
+        adicionarOuvintesDeEventos();
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+}
+
+function obterBlocosPorLocal(localInput) {
+    const url = `/subprefeitura?subprefeitura=${localInput}`;
+    console.log(localInput);
+    // Faz uma solicitação GET para o servidor
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    })
+    .then(response => {
+        if (!response.ok){
+            throw new Error(`Erro na solicitação: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        adicionarCardsAoContainer(data);
+        adicionarOuvintesDeEventos();
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+}
+
+
+
 
     function adicionarOuvintesDeEventos() {
         var buttons = document.querySelectorAll('.add-list-link');

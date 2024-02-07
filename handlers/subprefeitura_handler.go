@@ -14,7 +14,7 @@ func SubprefeituraBlocosHandler(w http.ResponseWriter, r *http.Request) {
 	repository := models.SubprefeituraRepository{}
 
 	// Recupera o subprefeitura da solicitação HTTP atual
-	subprefeitura := r.URL.Query().Get("Subprefeitura")
+	subprefeitura := r.URL.Query().Get("subprefeitura")
 	if subprefeitura == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Subprefeitura não especificada"))

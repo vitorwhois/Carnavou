@@ -32,3 +32,6 @@ go.mod
 
 # Arquivos de log
 logs/
+
+/Pesquisa
+/teste

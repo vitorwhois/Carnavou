@@ -29,8 +29,9 @@ func main() {
 	http.HandleFunc("/blocosPorData", handlers.BlocosPorDataHandler)     // Ajuste da rota para /blocosPorData
 	http.HandleFunc("/pesquisarBlocos", handlers.PesquisarBlocosHandler) // Pesquisa por nome
 	http.Handle("/buscaid", handler)
-	http.HandleFunc("/minhalista", minhalistaHandler.Handle)               //Lista criada pelo usuário */
-	http.HandleFunc("/subprefeitura", handlers.SubprefeituraBlocosHandler) // Pesquisa por nome
+	http.HandleFunc("/minhalista", minhalistaHandler.Handle)                //Lista criada pelo usuário
+	http.HandleFunc("/subprefeitura", handlers.SubprefeituraBlocosHandler)  // Pesquisa por subprefeitura
+	http.HandleFunc("/filtro", handlers.BlocosPorDataESubprefeituraHandler) // Pesquisa por data e subprefeitura
 
 	port := 8080
 	fmt.Printf("Servidor rodando em http://localhost:%d\n", port)
