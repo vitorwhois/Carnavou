@@ -655,6 +655,11 @@ padding-right: 8px;
 }
 
 /* minhalista Fim */
+
+/* Sobre */
+h1{
+    color: var(--roxo-500);
+}
 .corpo {
     max-width: 624px!important;
   }

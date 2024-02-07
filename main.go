@@ -22,6 +22,7 @@ func main() {
 	indexHandler := handlers.NewIndexHandler()
 	handler := handlers.NewBlocosPorIDHandler(db)        // Passa a conexão do banco de dados
 	minhalistaHandler := handlers.NewMinhalistaHandler() // Cria uma instância de MinhalistaHandler
+	sobreHandler := handlers.NewSobreHandler()           // Cria uma instância de MinhalistaHandler
 
 	// Use o método Handle da instância
 	http.HandleFunc("/", indexHandler.Handle)
@@ -30,6 +31,7 @@ func main() {
 	http.HandleFunc("/pesquisarBlocos", handlers.PesquisarBlocosHandler) // Pesquisa por nome
 	http.Handle("/buscaid", handler)
 	http.HandleFunc("/minhalista", minhalistaHandler.Handle)                //Lista criada pelo usuário
+	http.HandleFunc("/sobre", sobreHandler.Handle)                          // Pagina Sobre nós
 	http.HandleFunc("/subprefeitura", handlers.SubprefeituraBlocosHandler)  // Pesquisa por subprefeitura
 	http.HandleFunc("/filtro", handlers.BlocosPorDataESubprefeituraHandler) // Pesquisa por data e subprefeitura
 
