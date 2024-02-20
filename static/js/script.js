@@ -372,7 +372,7 @@ function obterBlocosPorLocal(localInput) {
     agendaContainer.appendChild(cardsContainer);
 
     // Chama a função para obter blocos por data ao carregar a página
-    obterBlocosAgenda('17/02/2024');
+    obterBlocosAgenda('18/02/2024');
 
     function adicionarCardsNaAgenda(cards) {
         // Adiciona os 5 cards ao contêiner
@@ -384,7 +384,7 @@ function obterBlocosPorLocal(localInput) {
 
     function obterBlocosAgenda(quantidade, startIndex) {
         // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
-        const url = `/blocosPorData?data=17/02/2024`;
+        const url = `/blocosPorData?data=18/02/2024`;
         console.log(url);
 
         // Faz uma solicitação GET para o servidor
