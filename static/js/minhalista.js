@@ -181,6 +181,7 @@ function obterBlocosPorID() {
     function removerBlocoLista(blocoId) {
         // Use filter para criar uma nova lista sem o bloco removido
         blocosSalvos = blocosSalvos.filter(id => id !== Number(blocoId));
+        localStorage.setItem('blocosSalvos', JSON.stringify(blocosSalvos));
         console.log("Blocos Salvos após a remoção:", blocosSalvos);
     }
 

@@ -1,25 +1,29 @@
  // Defina a var iável "blocoId" 
     let blocoId;
     let blocosSalvos = [];
+    function salvarBlocoNaLista(blocoId) {
+        console.log(blocoId);
+        let localSalvos = JSON.parse(localStorage.getItem('blocosSalvos'));
+        let blocosSalvos = localSalvos ? localSalvos : []; // Se localSalvos for null, inicialize blocosSalvos como um array vazio
+        // Adiciona o novo ID à lista
+        if (!blocosSalvos.includes(blocoId)) {
+          blocosSalvos.push(blocoId);
+          localStorage.setItem('blocosSalvos', JSON.stringify(blocosSalvos)); // Salva blocosSalvos no localStorage, não localSalvos
+        }
+      }
+      
 
-
-function salvarBlocoNaLista(blocoId) {
-  console.log(blocoId);
-
-  // Adiciona o novo ID à lista
-  if (!blocosSalvos.includes(blocoId)) {
-    blocosSalvos.push(blocoId);
-  }
-
-  // Imprime o valor de blocosSalvos no console
-  console.log(blocosSalvos);
-}
 
 function ChamaLista (){
-    let lista = blocosSalvos;
+    let lista = JSON.parse(localStorage.getItem('blocosSalvos'));
     console.log(blocosSalvos);
     console.log(lista);
-    window.location.href = `minhalista?ids=${blocosSalvos.join(',')}`;
+    if(lista){
+        window.location.href = `minhalista?ids=${lista.join(',')}`;
+    }
+    else {
+        window.location.href = `minhalista`;
+    }
 }
 
 

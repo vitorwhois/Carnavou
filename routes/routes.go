@@ -11,10 +11,10 @@ func InitRoutes(db *sql.DB) {
 	indexHandler := handlers.NewIndexHandler()
 	minhalistaHandler := handlers.NewMinhalistaHandler()
 	sobreHandler := handlers.NewSobreHandler()
-	BlocosPorDataSubprefeituraHandler := handlers.NewBlocosPorDataSubprefeituraHandler(db)
-	BlocosPorIDHandler := handlers.NewBlocosPorIDHandler(db)
 	BlocosPorDataHandler := handlers.NewBlocosPorDataHandler(db)
 	BlocosPorNomeHandler := handlers.NewBlocosPorNomeHandler(db)
+	BlocosPorIDHandler := handlers.NewBlocosPorIDHandler(db)
+	BlocosPorDataSubprefeituraHandler := handlers.NewBlocosPorDataSubprefeituraHandler(db)
 	BlocosPorSubprefeituraHandler := handlers.NewBlocosPorSubprefeituraHandler(db)
 
 	http.HandleFunc("/", indexHandler.Handle)
