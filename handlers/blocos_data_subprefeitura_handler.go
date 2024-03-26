@@ -1,18 +1,26 @@
 package handlers
 
 import (
+	"database/sql"
 	"encoding/json"
 	"log"
 	"net/http"
 
-	"github.com/vitorwhois/Carnavou/models"
+	"github.com/vitorwhois/Carnavou/repositories"
 )
 
-func BlocosPorDataESubprefeituraHandler(w http.ResponseWriter, r *http.Request) {
-	repository := models.ListaRepository{}
+type BlocosPorDataSubprefeituraHandler struct {
+	repo *repositories.BlocosPorDataSubprefeituraRepository
+}
 
-	data := r.URL.Query().Get("data")
-	subprefeitura := r.URL.Query().Get("subprefeitura")
+func NewBlocosPorDataSubprefeituraHandler(db *sql.DB) *BlocosPorDataSubprefeituraHandler {
+	repo := repositories.NewBlocosPorDataSubprefeituraRepository(db)
+	return &BlocosPorDataSubprefeituraHandler{repo: repo}
+}
+
+func (h *BlocosPorDataSubprefeituraHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	data := r.URL.Query().Get("datas")
+	subprefeitura := r.URL.Query().Get("subprefeituras")
 
 	if data == "" || subprefeitura == "" {
 		w.WriteHeader(http.StatusBadRequest)
@@ -20,7 +28,7 @@ func BlocosPorDataESubprefeituraHandler(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	blocos, err := repository.ObterBlocosPorDataESubprefeitura(data, subprefeitura)
+	blocos, err := h.repo.ObterBlocosPorDataSubprefeitura(data, subprefeitura)
 	if err != nil {
 		log.Printf("Erro ao obter dados de blocos por data e subprefeitura: %v", err)
 		http.Error(w, "Erro ao obter dados de blocos por data e subprefeitura", http.StatusInternalServerError)

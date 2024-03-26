@@ -26,19 +26,18 @@ function ChamaLista (){
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener('DOMContentLoaded', function () {
 
-    let quantidadeBlocosCarregados = 0;
     const blocosPorPagina = 5;
+    let quantidadeBlocosCarregados = 0;
 
-    // Adiciona um ouvinte de evento ao botão "Próximos blocos"
     const btnProximos = document.getElementById('btn-proximos');
     if (btnProximos) {
         btnProximos.addEventListener('click', function () {
             // Carrega mais 5 blocos (ou a quantidade desejada)
-            obterBlocosAgenda(blocosPorPagina, quantidadeBlocosCarregados);
+            obterBlocosAgenda(obterDataAtualFormatada(), blocosPorPagina, quantidadeBlocosCarregados);
         });
     }
-        // Chama a função para obter os primeiros 5 blocos ao carregar a página
-        obterBlocosAgenda(blocosPorPagina, quantidadeBlocosCarregados);
+/*         // Chama a função para obter os primeiros 5 blocos ao carregar a página
+        obterBlocosAgenda(blocosPorPagina, quantidadeBlocosCarregados); */
 
   // Adiciona um ouvinte de evento ao campo de pesquisa
   const campoPesquisa = document.getElementById('nomeInput');
@@ -96,7 +95,7 @@ if (botaoPesquisa) {
     // Função para fazer uma solicitação AJAX usando Fetch
     function obterBlocosPorData(dataInput) {
         // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
-        const url = `/blocosPorData?data=${dataInput}`;
+        const url = `/blocos/datas?datas=${dataInput}`;
         console.log(dataInput);
         console.log(url);
 
@@ -132,7 +131,7 @@ if (botaoPesquisa) {
     // Função para pesquisar blocos por nome
     function pesquisarBlocosPorNome(nomeInput) {
         // BlocosPorNomeHandler
-        const url = `/pesquisarBlocos?nome=${nomeInput}`;
+        const url = `/blocos/nomes?nomes=${nomeInput}`;
         console.log(nomeInput);
         console.log(url);
         // Faz uma solicitação GET para o servidor
@@ -294,7 +293,7 @@ function adicionarCardsAoContainer(blocosPorData) {
     }
 }
 function ObterBlocosPorDataESubprefeitura(dataInput, localInput) {
-    const url = `/filtro?data=${encodeURIComponent(dataInput)}&subprefeitura=${encodeURIComponent(localInput)}`;
+    const url = `/blocos/filtros?datas=${encodeURIComponent(dataInput)}&subprefeituras=${encodeURIComponent(localInput)}`;
     console.log(dataInput,localInput);
     // Faz uma solicitação GET para o servidor
     fetch(url, {
@@ -365,67 +364,98 @@ function obterBlocosPorLocal(localInput) {
       
 
 
-    // Adiciona a div para os cards abaixo da div agenda
-    const agendaContainer = document.querySelector('.agenda');
-    const cardsContainer = document.createElement('div');
-    cardsContainer.className = 'cards-container';
-    agendaContainer.appendChild(cardsContainer);
+// Adiciona a div para os cards abaixo da div agenda
+const agendaContainer = document.querySelector('.agenda');
+const cardsContainer = document.createElement('div');
+cardsContainer.className = 'cards-container';
+agendaContainer.appendChild(cardsContainer);
 
-    // Chama a função para obter blocos por data ao carregar a página
-    obterBlocosAgenda('18/02/2024');
+// Função para obter a data atual no formato DD/MM/YYYY
+function obterDataAtualFormatada() {
+    let dataAtual = new Date();
+    let dia = String(dataAtual.getDate()).padStart(2, '0');
+    let mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
+    let ano = dataAtual.getFullYear();
 
-    function adicionarCardsNaAgenda(cards) {
-        // Adiciona os 5 cards ao contêiner
-        cards.forEach(bloco => {
-            const card = criarCard(bloco);
-            cardsContainer.appendChild(card);
-        });
+    // Cria uma data no formato DD/MM/YYYY
+    let dataFormatada = `${dia}/${mes}/${ano}`;
+
+    // Cria uma data para 18/02/2024
+    let dataLimite = new Date(2024, 1, 18); 
+
+    // Compara a data atual com a data limite
+    if (dataAtual > dataLimite) {
+        return '18/02/2024';
+    } else {
+        return dataFormatada;
     }
+}
 
-    function obterBlocosAgenda(quantidade, startIndex) {
-        // Substitua a URL pelo caminho correto para o seu manipulador BlocosPorDataHandler
-        const url = `/blocosPorData?data=18/02/2024`;
-        console.log(url);
+// Define a quantidade e o startIndex
+let quantidade = 5;
+let startIndex = 0;
 
-        // Faz uma solicitação GET para o servidor
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-            },
-        })
-            .then(response => {
-                // Verifica se a resposta está OK
-                if (!response.ok) {
-                    throw new Error(`Erro na solicitação: ${response.status}`);
-                }
-                // Converte a resposta para JSON
-                return response.json();
-            })
-            .then(data => {
-                // Manipula os dados recebidos (no formato JSON)
-                console.log("Blocos recebidos:", data);
+// Chama a função para obter blocos por data ao carregar a página
+obterBlocosAgenda(obterDataAtualFormatada(), quantidade, startIndex);
 
-                // Verifica se há blocos suficientes para carregar
-                if (startIndex < data.length) {
-                    // Chama a função para adicionar os 5 cards ao contêiner
-                    adicionarCardsNaAgenda(data.slice(startIndex, startIndex + quantidade));
-                    quantidadeBlocosCarregados += quantidade;
-                    adicionarOuvintesDeEventos();
-                } else {
-                    console.log('Não há mais blocos para carregar.');
-                }
-            })
-            .catch(error => {
-                // Lida com erros durante a solicitação
-                console.error("Erro durante a solicitação:", error.message);
-            });
-    }
-    document.getElementById("botaoLimpar").addEventListener("click", function() {
-        document.getElementById("nomeInput").value = "";
-        document.getElementById("dataInput").value = "";
-        document.getElementById("localInput").value = "";
+function adicionarCardsNaAgenda(cards) {
+    // Adiciona os 5 cards ao contêiner
+    cards.forEach(bloco => {
+        const card = criarCard(bloco);
+        cardsContainer.appendChild(card);
     });
+}
+
+function obterBlocosAgenda(data, quantidade, startIndex) {
+    const url = `/blocos/datas?datas=${data}`;
+    console.log(url);
+    console.log(data);
+
+    // Faz uma solicitação GET para o servidor
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    })
+        .then(response => {
+            // Verifica se a resposta está OK
+            if (!response.ok) {
+                throw new Error(`Erro na solicitação: ${response.status}`);
+            }
+            // Converte a resposta para JSON
+            return response.json();
+        })
+        .then(data => {
+            // Manipula os dados recebidos (no formato JSON)
+            console.log("Blocos recebidos:", data);
+            if (data === null) {
+                console.error('Os dados recebidos são nulos.');
+                return;
+            }
+
+            // Verifica se há blocos suficientes para carregar
+            if (startIndex < data.length) {
+                // Chama a função para adicionar os 5 cards ao contêiner
+                adicionarCardsNaAgenda(data.slice(startIndex, startIndex + quantidade));
+                quantidadeBlocosCarregados += quantidade;
+                adicionarOuvintesDeEventos();
+            } else {
+                console.log('Não há mais blocos para carregar.');
+            }
+        })
+        .catch(error => {
+            // Lida com erros durante a solicitação
+            console.error("Erro durante a solicitação:", error.message);
+        });
+}
+
+document.getElementById("botaoLimpar").addEventListener("click", function() {
+    document.getElementById("nomeInput").value = "";
+    document.getElementById("dataInput").value = "";
+    document.getElementById("localInput").value = "";
+});
+
 
 
 });

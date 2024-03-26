@@ -7,15 +7,15 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/vitorwhois/Carnavou/models"
+	"github.com/vitorwhois/Carnavou/repositories"
 )
 
 type BlocosPorIDHandler struct {
-	repo *models.BuscaIDRepository
+	repo *repositories.BlocoPorIDRepository
 }
 
 func NewBlocosPorIDHandler(db *sql.DB) *BlocosPorIDHandler {
-	repo := models.NewBuscaIDRepository(db)
+	repo := repositories.NewBlocoPorIDRepository(db)
 	return &BlocosPorIDHandler{repo: repo}
 }
 
@@ -30,6 +30,11 @@ func (h *BlocosPorIDHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Printf("Erro ao obter dados de blocos por ID: %v", err)
 		http.Error(w, "Erro ao obter dados de blocos por ID", http.StatusInternalServerError)
+		return
+	}
+
+	if len(blocos) == 0 {
+		http.Error(w, "Nenhum bloco encontrado com os IDs fornecidos", http.StatusNotFound)
 		return
 	}
 

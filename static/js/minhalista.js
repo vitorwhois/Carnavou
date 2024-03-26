@@ -33,7 +33,7 @@ function obterBlocosPorID() {
     return;
 }
     // Faz uma solicitação GET para buscar os blocos correspondentes
-    fetch('/buscaid?ids=' + ids, {
+    fetch('/blocos/ids?ids=' + ids, {
         method: 'GET',
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
