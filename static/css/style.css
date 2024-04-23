@@ -11,10 +11,14 @@
     --roxo-200:#DBCDDF;
     --roxo-100:#F3EBF6;
     --pretume: #000;
-    --dark-80:#1E2022;
+    --dark-800:#1E2022;
     --dark-600:#45434C;
     --dark-400:#8D8A92;
     --fundo:#F8F8F5;
+    /* padrodizar o dark 800 */
+}
+ol, ul {
+    list-style: none;
 }
 body {
     font-family: 'Inter', sans-serif !important;
@@ -391,7 +395,7 @@ option {
     margin-bottom: 48px;
 }
 .outros h3{
-    color: var(--dark-80, #1E2022);
+    color: var(--dark-800, #1E2022);
     font-family: Merriweather;
     font-size: 24px;
     font-style: normal;
@@ -399,7 +403,7 @@ option {
     line-height: normal;
 }
 .outros p{
-    color: var(--dark-80, #1E2022);
+    color: var(--dark-800, #1E2022);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -657,12 +661,64 @@ padding-right: 8px;
 /* minhalista Fim */
 
 /* Sobre */
-h1{
-    color: var(--roxo-500);
-}
 .corpo {
     max-width: 624px!important;
   }
+
+.sobre{
+    margin-top: 80px;
+    margin-bottom: 157px;
+}
+.sobre-nos{
+    margin-top: 64px !important;
+}
+
+.sobre-title {
+    color: var(--Roxo-500, #682B7D);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Merriweather;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    }
+.headline{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+.headline-text {
+    display: flex;
+    flex-direction: column;
+}
+.headline-text h3{
+padding-top: 51px;
+}
+.headline-text p{
+    color: var(--Dark-600, #45434C);    
+}
+.sobre-text {
+    color: var(--dark-800);
+}
+.image-rounded{
+    border-radius: 50%;
+    height: 102px;
+}
+.sobre-contato ul {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+.sobre-contato a {
+    color: var(--dark-800);
+    text-decoration: underline;
+}
+.sobre-contato a:hover {
+    color: var(--roxo-200);
+}
+
 
 /* Responsivo */
 @media (min-width:990px){
