@@ -699,7 +699,7 @@ padding-top: 51px;
 .headline-text p{
     color: var(--Dark-600, #45434C);    
 }
-.sobre-text {
+.sobre-text p {
     color: var(--dark-800);
 }
 .image-rounded{
