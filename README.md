@@ -6,7 +6,7 @@ Os blocos serão organizados para o usuario buscar por nome, data e categorias (
 Sera disponibilizado a possibilidade de salvar uma lista dos blocos escolhidos e compartilhar o link com amigos.
 
 ## Conteúdo
-![págia inicial](https://imgur.com/a/4AnupQQ)
+![Pagina inicial](https://i.imgur.com/TWZLvxb.jpeg)
 - Pagina inicial:
   Barra de pesquisa de blocos por nome.
   Botão Filtrar para encontrar blocos por região e data.
