@@ -5,17 +5,17 @@ import (
 	"log"
 	"os"
 
-	//	"github.com/joho/godotenv"
+	/* 	"github.com/joho/godotenv" */
 	_ "github.com/lib/pq"
 )
 
 var SupabaseDB *sql.DB
 
 func init() {
-	//	err := godotenv.Load()
-	//	if err != nil {
-	//		log.Fatal("Erro ao carregar .env file")
-	//	}
+	/* 	err := godotenv.Load()
+	   	if err != nil {
+	   		log.Fatal("Erro ao carregar .env file")
+	   	} */
 
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
