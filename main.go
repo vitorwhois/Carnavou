@@ -7,7 +7,6 @@ import (
 
 	_ "github.com/lib/pq"
 	"github.com/vitorwhois/Carnavou/middlewares"
-	_ "github.com/vitorwhois/Carnavou/middlewares"
 	"github.com/vitorwhois/Carnavou/routes"
 	"github.com/vitorwhois/Carnavou/storage"
 )
@@ -26,6 +25,7 @@ func main() {
 
 	port := 8080
 	fmt.Printf("Servidor rodando em http://localhost:%d\n", port)
+
 	err = http.ListenAndServe(fmt.Sprintf(":%d", port), handlerWithCORS)
 	if err != nil {
 		fmt.Println("Erro ao iniciar o servidor:", err)
