@@ -16,6 +16,7 @@ func InitRoutes(db *sql.DB) {
 	BlocosPorIDHandler := handlers.NewBlocosPorIDHandler(db)
 	BlocosPorDataSubprefeituraHandler := handlers.NewBlocosPorDataSubprefeituraHandler(db)
 	BlocosPorSubprefeituraHandler := handlers.NewBlocosPorSubprefeituraHandler(db)
+	authHandler := handlers.NewAuthHandler(db)
 
 	http.HandleFunc("/", indexHandler.Handle)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -27,4 +28,7 @@ func InitRoutes(db *sql.DB) {
 	http.Handle("/blocos/ids", BlocosPorIDHandler)
 	http.Handle("/blocos/filtros", BlocosPorDataSubprefeituraHandler)
 	http.Handle("/blocos/subprefeituras", BlocosPorSubprefeituraHandler)
+
+	http.HandleFunc("/auth/register", authHandler.Register)
+	http.HandleFunc("/auth/login", authHandler.Login)
 }

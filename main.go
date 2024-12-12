@@ -22,11 +22,12 @@ func main() {
 	routes.InitRoutes(db)
 
 	handlerWithCORS := middlewares.EnableCORS(http.DefaultServeMux)
+	handlerWithSecurityAndCORS := middlewares.SetSecurityHeaders(handlerWithCORS)
 
 	port := 8080
 	fmt.Printf("Servidor rodando em http://localhost:%d\n", port)
 
-	err = http.ListenAndServe(fmt.Sprintf(":%d", port), handlerWithCORS)
+	err = http.ListenAndServe(fmt.Sprintf(":%d", port), handlerWithSecurityAndCORS)
 	if err != nil {
 		fmt.Println("Erro ao iniciar o servidor:", err)
 	}
