@@ -52,9 +52,18 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if valid, err := h.repo.ValidateUser(user.Email, user.Password); err != nil || !valid {
-		http.Error(w, "Credenciais inválidas", http.StatusUnauthorized)
+		w.WriteHeader(http.StatusUnauthorized)
+		json.NewEncoder(w).Encode(map[string]string{"message": "Credenciais inválidas"})
 		return
 	}
 
+	// Aqui você pode gerar um token JWT ou outra forma de autenticação, se necessário
+	// token := generateToken(user.Email) // Exemplo de geração de token
+
+	// Resposta de sucesso
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"message": "Login bem-sucedido",
+		// "token": token, // Inclua o token se estiver usando autenticação baseada em token
+	})
 } 

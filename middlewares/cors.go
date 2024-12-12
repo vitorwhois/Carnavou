@@ -12,6 +12,7 @@ func EnableCORS(next http.Handler) http.Handler {
 			"https://carnavou.onrender.com",
 			"http://localhost:3000",
 			"http://localhost:8080",
+			"http://localhost:8081",
 		}
 
 		origin := r.Header.Get("Origin")
